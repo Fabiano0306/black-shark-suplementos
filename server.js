@@ -15,23 +15,39 @@ app.post("/calcular-frete", async (req, res) => {
   }
 
   const args = {
-  sCepOrigem: "12071350",
-  sCepDestino: cepDestino,
-  nVlPeso: "1",
-  nCdFormato: "1",
-  nVlComprimento: "20",
-  nVlAltura: "10",
-  nVlLargura: "15",
-  nCdServico: ["04014", "04510"], // SEDEX e PAC
-  nVlDiametro: "0",
-};
-
+    sCepOrigem: "89150000", // CEP da loja
+    sCepDestino: cepDestino,
+    nVlPeso: "1",
+    nCdFormato: "1",
+    nVlComprimento: "20",
+    nVlAltura: "10",
+    nVlLargura: "15",
+    nCdServico: ["04014", "04510"], // SEDEX e PAC
+    nVlDiametro: "0",
+  };
 
   try {
     console.log("📦 Calculando frete com:", args);
+
     const resultado = await calcularPrecoPrazo(args);
-    console.log("✅ Resultado Correios:", resultado);
-    return res.json(resultado);
+
+    // Se não houver retorno
+    if (!resultado || resultado.length === 0) {
+      return res.status(404).json({
+        erro: "Não foi possível calcular o frete. Verifique os CEPs ou tente novamente mais tarde.",
+      });
+    }
+
+    // Filtra apenas preço e prazo
+    const fretes = resultado.map((r) => ({
+      servico: r.Codigo,
+      nome: r.Nome,
+      valor: r.Valor,
+      prazoEntrega: r.PrazoEntrega,
+      aviso: r.MsgErro || null,
+    }));
+
+    return res.json({ fretes });
   } catch (error) {
     console.error("❌ Erro no cálculo de frete:", error);
     return res.status(500).json({
