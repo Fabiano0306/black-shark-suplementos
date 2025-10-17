@@ -15,17 +15,17 @@ app.post("/calcular-frete", async (req, res) => {
   }
 
   const args = {
-    sCepOrigem: "12071350", // CEP da loja (sem hífen)
-    sCepDestino: cepDestino,
-    nVlPeso: "1",
-    nCdFormato: "1",
-    nVlComprimento: "20",
-    nVlAltura: "10",
-    nVlLargura: "15",
-    // ✅ Correção principal — precisa ser string, não array
-    nCdServico: "04014,04510", // SEDEX e PAC
-    nVlDiametro: "0",
-  };
+  sCepOrigem: "12071350",
+  sCepDestino: cepDestino,
+  nVlPeso: "1",
+  nCdFormato: "1",
+  nVlComprimento: "20",
+  nVlAltura: "10",
+  nVlLargura: "15",
+  nCdServico: ["04014", "04510"], // SEDEX e PAC
+  nVlDiametro: "0",
+};
+
 
   try {
     console.log("📦 Calculando frete com:", args);
