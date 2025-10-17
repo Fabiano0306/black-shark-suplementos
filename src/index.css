@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BLACK SHARK SUPLEMENTOS - Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 98%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 98%;
+
+    --radius: 0.5rem;
+
+    /* Black Shark Custom Tokens */
+    --shark-black: 0 0% 4%;
+    --shark-white: 0 0% 98%;
+    --shark-gray-dark: 0 0% 12%;
+    --shark-gray: 0 0% 25%;
+    --shark-gray-light: 0 0% 45%;
+    
+    /* Gradients */
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 4%), hsl(0 0% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 8%), hsl(0 0% 6%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(0 0% 98% / 0.15);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.5);
+    --shadow-elegant: 0 4px 20px hsl(0 0% 0% / 0.3);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .btn-shark {
+    @apply relative px-8 py-4 font-semibold text-shark-black bg-shark-white rounded-lg 
+           transition-all duration-300 overflow-hidden;
+  }
+  
+  .btn-shark::before {
+    @apply content-[''] absolute inset-0 bg-shark-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-shark:hover {
+    @apply scale-105 shadow-[0_0_30px_rgba(255,255,255,0.3)];
+  }
+
+  .btn-shark-outline {
+    @apply px-8 py-4 font-semibold text-shark-white bg-transparent border-2 border-shark-white 
+           rounded-lg transition-all duration-300;
+  }
+
+  .btn-shark-outline:hover {
+    @apply bg-shark-white text-shark-black scale-105 shadow-[0_0_30px_rgba(255,255,255,0.3)];
+  }
+
+  .product-card {
+    @apply relative bg-gradient-to-br from-[hsl(0,0%,8%)] to-[hsl(0,0%,6%)] 
+           rounded-xl overflow-hidden transition-all duration-300 
+           border border-shark-gray-dark hover:border-shark-white/30;
+  }
+
+  .product-card:hover {
+    @apply scale-105 shadow-[0_10px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(255,255,255,0.1)];
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-black text-shark-white mb-4 
+           relative inline-block;
+  }
+
+  .section-title::after {
+    @apply content-[''] absolute bottom-0 left-0 w-20 h-1 bg-shark-white;
+  }
+
+  .text-glow {
+    @apply drop-shadow-[0_0_20px_rgba(255,255,255,0.5)];
+  }
+
+  .cart-badge {
+    @apply absolute -top-2 -right-2 bg-shark-white text-shark-black 
+           text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
