@@ -6,14 +6,18 @@ import preTreinoImage from '@/assets/pre-treino.png';
 import bcaaImage from '@/assets/bcaa.png';
 
 export const products: Product[] = [
-  // Whey Protein
+  // 🥩 Whey Protein (potes de ~900g)
   {
     id: 'whey-1',
     name: 'Whey Protein Concentrado 900g',
     price: 89.90,
     image: wheyImage,
     category: 'Whey Protein',
-    description: 'Proteína de alta qualidade para ganho de massa muscular'
+    description: 'Proteína de alta qualidade para ganho de massa muscular',
+    weight: 0.9,
+    width: 18,
+    height: 23,
+    length: 18,
   },
   {
     id: 'whey-2',
@@ -22,7 +26,11 @@ export const products: Product[] = [
     image: wheyImage,
     category: 'Whey Protein',
     description: 'Absorção rápida e baixo teor de gordura',
-    isBestSeller: true
+    isBestSeller: true,
+    weight: 0.9,
+    width: 18,
+    height: 23,
+    length: 18,
   },
   {
     id: 'whey-3',
@@ -30,10 +38,14 @@ export const products: Product[] = [
     price: 149.90,
     image: wheyImage,
     category: 'Whey Protein',
-    description: 'Máxima absorção para resultados rápidos'
+    description: 'Máxima absorção para resultados rápidos',
+    weight: 0.9,
+    width: 18,
+    height: 23,
+    length: 18,
   },
 
-  // Creatina
+  // ⚡ Creatina (~300g, pote pequeno)
   {
     id: 'creatina-1',
     name: 'Creatina Monohidratada 300g',
@@ -41,7 +53,11 @@ export const products: Product[] = [
     image: creatinaImage,
     category: 'Creatina',
     description: 'Aumento de força e performance',
-    isBestSeller: true
+    isBestSeller: true,
+    weight: 0.3,
+    width: 10,
+    height: 12,
+    length: 10,
   },
   {
     id: 'creatina-2',
@@ -49,10 +65,14 @@ export const products: Product[] = [
     price: 79.90,
     image: creatinaImage,
     category: 'Creatina',
-    description: 'Creatina premium importada'
+    description: 'Creatina premium importada',
+    weight: 0.3,
+    width: 10,
+    height: 12,
+    length: 10,
   },
 
-  // Pré-Treino
+  // 🚀 Pré-Treino (~300g, pote médio)
   {
     id: 'pre-1',
     name: 'Pré-Treino Extreme 300g',
@@ -60,7 +80,11 @@ export const products: Product[] = [
     image: preTreinoImage,
     category: 'Pré-Treino',
     description: 'Energia e foco para treinos intensos',
-    isBestSeller: true
+    isBestSeller: true,
+    weight: 0.3,
+    width: 11,
+    height: 13,
+    length: 11,
   },
   {
     id: 'pre-2',
@@ -68,17 +92,25 @@ export const products: Product[] = [
     price: 89.90,
     image: preTreinoImage,
     category: 'Pré-Treino',
-    description: 'Máxima explosão muscular'
+    description: 'Máxima explosão muscular',
+    weight: 0.3,
+    width: 11,
+    height: 13,
+    length: 11,
   },
 
-  // Termogênicos
+  // 🔥 Termogênicos (potes pequenos com cápsulas)
   {
     id: 'termo-1',
     name: 'Termogênico Black Fire 60 caps',
     price: 54.90,
     image: preTreinoImage,
     category: 'Termogênicos',
-    description: 'Acelera o metabolismo e queima gordura'
+    description: 'Acelera o metabolismo e queima gordura',
+    weight: 0.15,
+    width: 8,
+    height: 10,
+    length: 8,
   },
   {
     id: 'termo-2',
@@ -86,10 +118,14 @@ export const products: Product[] = [
     price: 129.90,
     image: preTreinoImage,
     category: 'Termogênicos',
-    description: 'Fórmula premium para definição'
+    description: 'Fórmula premium para definição',
+    weight: 0.15,
+    width: 8,
+    height: 10,
+    length: 8,
   },
 
-  // BCAA / Aminoácidos
+  // 💪 BCAA / Aminoácidos (cápsulas e pó)
   {
     id: 'bcaa-1',
     name: 'BCAA 2:1:1 - 120 caps',
@@ -97,7 +133,11 @@ export const products: Product[] = [
     image: bcaaImage,
     category: 'BCAA / Aminoácidos',
     description: 'Recuperação muscular e anti-catabólico',
-    isBestSeller: true
+    isBestSeller: true,
+    weight: 0.2,
+    width: 9,
+    height: 11,
+    length: 9,
   },
   {
     id: 'bcaa-2',
@@ -105,7 +145,11 @@ export const products: Product[] = [
     price: 69.90,
     image: bcaaImage,
     category: 'BCAA / Aminoácidos',
-    description: 'BCAA em pó com sabor'
+    description: 'BCAA em pó com sabor',
+    weight: 0.3,
+    width: 11,
+    height: 13,
+    length: 11,
   },
   {
     id: 'amino-1',
@@ -113,17 +157,25 @@ export const products: Product[] = [
     price: 59.90,
     image: bcaaImage,
     category: 'BCAA / Aminoácidos',
-    description: 'Recuperação e imunidade'
+    description: 'Recuperação e imunidade',
+    weight: 0.3,
+    width: 11,
+    height: 13,
+    length: 11,
   },
 
-  // Hipercalóricos
+  // 🍚 Hipercalóricos (sacos grandes 3kg)
   {
     id: 'hiper-1',
     name: 'Hipercalórico Mass Gainer 3kg',
     price: 99.90,
     image: wheyImage,
     category: 'Hipercalóricos',
-    description: 'Ganho de peso e massa muscular'
+    description: 'Ganho de peso e massa muscular',
+    weight: 3.0,
+    width: 30,
+    height: 40,
+    length: 20,
   },
   {
     id: 'hiper-2',
@@ -131,17 +183,25 @@ export const products: Product[] = [
     price: 119.90,
     image: wheyImage,
     category: 'Hipercalóricos',
-    description: 'Alta concentração calórica'
+    description: 'Alta concentração calórica',
+    weight: 3.0,
+    width: 30,
+    height: 40,
+    length: 20,
   },
 
-  // Vitaminas e Minerais
+  // 💊 Vitaminas e Minerais (frascos pequenos)
   {
     id: 'vita-1',
     name: 'Multivitamínico Premium 60 caps',
     price: 39.90,
     image: bcaaImage,
     category: 'Vitaminas e Minerais',
-    description: 'Complexo vitamínico completo'
+    description: 'Complexo vitamínico completo',
+    weight: 0.15,
+    width: 8,
+    height: 10,
+    length: 8,
   },
   {
     id: 'vita-2',
@@ -149,7 +209,11 @@ export const products: Product[] = [
     price: 44.90,
     image: bcaaImage,
     category: 'Vitaminas e Minerais',
-    description: 'Saúde cardiovascular'
+    description: 'Saúde cardiovascular',
+    weight: 0.15,
+    width: 8,
+    height: 10,
+    length: 8,
   },
   {
     id: 'vita-3',
@@ -157,17 +221,25 @@ export const products: Product[] = [
     price: 29.90,
     image: bcaaImage,
     category: 'Vitaminas e Minerais',
-    description: 'Fortalece ossos e imunidade'
+    description: 'Fortalece ossos e imunidade',
+    weight: 0.1,
+    width: 7,
+    height: 9,
+    length: 7,
   },
 
-  // Barras e Snacks
+  // 🍫 Barras e Snacks
   {
     id: 'barra-1',
     name: 'Barra de Proteína Chocolate (Caixa 12un)',
     price: 59.90,
     image: wheyImage,
     category: 'Barras e Snacks',
-    description: 'Lanche proteico prático'
+    description: 'Lanche proteico prático',
+    weight: 0.8,
+    width: 18,
+    height: 8,
+    length: 22,
   },
   {
     id: 'barra-2',
@@ -175,17 +247,25 @@ export const products: Product[] = [
     price: 24.90,
     image: wheyImage,
     category: 'Barras e Snacks',
-    description: 'Fonte natural de proteína e gorduras boas'
+    description: 'Fonte natural de proteína e gorduras boas',
+    weight: 0.5,
+    width: 10,
+    height: 11,
+    length: 10,
   },
 
-  // Combos Promocionais
+  // 🎁 Combos Promocionais (embalagem composta)
   {
     id: 'combo-1',
     name: 'Combo Iniciante (Whey + Creatina)',
     price: 129.90,
     image: wheyImage,
     category: 'Combos Promocionais',
-    description: 'Kit completo para começar'
+    description: 'Kit completo para começar',
+    weight: 1.2,
+    width: 25,
+    height: 25,
+    length: 25,
   },
   {
     id: 'combo-2',
@@ -194,7 +274,11 @@ export const products: Product[] = [
     image: wheyImage,
     category: 'Combos Promocionais',
     description: 'Máxima performance nos treinos',
-    isBestSeller: true
+    isBestSeller: true,
+    weight: 1.5,
+    width: 28,
+    height: 28,
+    length: 28,
   },
   {
     id: 'combo-3',
@@ -202,7 +286,11 @@ export const products: Product[] = [
     price: 159.90,
     image: wheyImage,
     category: 'Combos Promocionais',
-    description: 'Para quem busca definição muscular'
+    description: 'Para quem busca definição muscular',
+    weight: 1.1,
+    width: 25,
+    height: 25,
+    length: 25,
   },
 ];
 

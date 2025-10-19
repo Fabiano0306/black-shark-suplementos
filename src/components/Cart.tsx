@@ -12,54 +12,81 @@ export const Cart = () => {
   const [frete, setFrete] = useState<{ servico: string; valor: string; prazo: string } | null>(null);
   const [loadingFrete, setLoadingFrete] = useState(false);
 
-  // 🔧 URL automática (detecta ambiente)
   const API_URL =
     import.meta.env.MODE === 'production'
-      ? 'https://black-shark-frete.onrender.com' // altere quando subir o server
+      ? 'https://black-shark-frete.onrender.com'
       : 'http://localhost:3000';
 
   const handleCalcularFrete = async () => {
-    if (!cep || cep.length < 8) {
-      toast.error('Digite um CEP válido!');
-      return;
-    }
+  if (!cep || cep.length < 8) {
+    toast.error('Digite um CEP válido!');
+    return;
+  }
 
-    setLoadingFrete(true);
-    try {
-      const res = await fetch(`${API_URL}/calcular-frete`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cepDestino: cep }),
+  if (cart.length === 0) {
+    toast.error('Carrinho vazio!');
+    return;
+  }
+
+  setLoadingFrete(true);
+  try {
+    const res = await fetch(`${API_URL}/calcular-frete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cepDestino: cep,
+        produtos: cart.map((item) => ({
+          id: item.id,
+          nome: item.name,
+          quantidade: item.quantity,
+          peso: item.weight || 0.5, // 🏋️ ajuste se quiser definir pesos fixos
+          largura: item.width || 15,
+          altura: item.height || 10,
+          comprimento: item.length || 20,
+          valor: item.price,
+        })),
+      }),
+    });
+
+    if (!res.ok) throw new Error('Erro ao calcular frete');
+    const data = await res.json();
+
+    console.log('📦 Resposta do servidor:', data);
+
+    const fretes = data.fretes;
+    if (Array.isArray(fretes) && fretes.length > 0) {
+      const fretesValidos = fretes.filter((f) => f.valor && !f.erro);
+
+      if (fretesValidos.length === 0) {
+        toast.error('Nenhum serviço de frete disponível para este CEP.');
+        return;
+      }
+
+      const melhor = fretesValidos.reduce((menor, atual) => {
+        const valorMenor = parseFloat(menor.valor.replace(/[R$\s]/g, '').replace(',', '.'));
+        const valorAtual = parseFloat(atual.valor.replace(/[R$\s]/g, '').replace(',', '.'));
+        return valorAtual < valorMenor ? atual : menor;
       });
 
-      if (!res.ok) throw new Error('Erro ao calcular frete');
-      const data = await res.json();
+      setFrete({
+        servico: melhor.servico,
+        valor: melhor.valor.replace('R$ ', ''),
+        prazo: melhor.prazo,
+      });
 
-      if (data && Array.isArray(data) && data.length > 0) {
-        const sedex = data.find((s) => s.Codigo === '04014');
-        const pac = data.find((s) => s.Codigo === '04510');
-
-        const valorSedex = parseFloat((sedex?.Valor || '9999').replace(',', '.'));
-        const valorPac = parseFloat((pac?.Valor || '9999').replace(',', '.'));
-
-        const melhor = valorSedex < valorPac ? sedex : pac;
-
-        setFrete({
-          servico: melhor?.Codigo === '04014' ? 'SEDEX' : 'PAC',
-          valor: melhor?.Valor || '0,00',
-          prazo: melhor?.PrazoEntrega || '—',
-        });
-        toast.success('Frete calculado com sucesso!');
-      } else {
-        toast.error('Não foi possível calcular o frete.');
-      }
-    } catch (error) {
-      console.error('Erro ao calcular frete:', error);
-      toast.error('Erro ao calcular o frete.');
-    } finally {
-      setLoadingFrete(false);
+      toast.success(`Frete ${melhor.servico}: ${melhor.valor} — ${melhor.prazo}`);
+    } else {
+      toast.error('Não foi possível calcular o frete.');
     }
-  };
+  } catch (error) {
+    console.error('Erro ao calcular frete:', error);
+    toast.error('Erro ao calcular o frete.');
+  } finally {
+    setLoadingFrete(false);
+  }
+};
+
+
 
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) {
@@ -245,22 +272,25 @@ export const Cart = () => {
                       <label className="block text-shark-gray-light text-sm mb-2">
                         CEP para entrega
                       </label>
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          value={cep}
-                          onChange={(e) => setCep(e.target.value)}
-                          placeholder="Digite seu CEP"
-                          className="flex-1 px-4 py-2 bg-shark-gray-dark border border-shark-gray rounded-lg text-shark-white placeholder:text-shark-gray-light focus:outline-none focus:border-shark-white transition-colors"
-                        />
-                        <button
-                          onClick={handleCalcularFrete}
-                          disabled={loadingFrete}
-                          className="btn-shark px-4 py-2"
-                        >
-                          {loadingFrete ? 'Calculando...' : 'Calcular'}
-                        </button>
-                      </div>
+                        <div className="flex items-center gap-2 min-w-0">
+                          <input
+                            type="text"
+                            value={cep}
+                            onChange={(e) => setCep(e.target.value)}
+                            placeholder="Digite seu CEP"
+                            className="flex-1 h-12 px-3 sm:px-4 bg-[#1a1a1a] border border-gray-600 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:border-white transition-colors max-w-full min-w-0"
+                          />
+                          <button
+  onClick={handleCalcularFrete}
+  disabled={loadingFrete}
+  className={`flex-shrink-0 h-10 px-3 sm:px-4 rounded-lg flex items-center justify-center font-semibold transition-colors
+    ${loadingFrete ? 'bg-gray-600 text-gray-300' : 'bg-[#e50914] hover:bg-[#b40810] text-white'}`}
+>
+  {loadingFrete ? 'Calculando...' : 'Calcular'}
+</button>
+
+                        </div>
+
 
                       {frete && (
                         <div className="mt-3 text-shark-gray-light text-sm">
