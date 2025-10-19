@@ -109,12 +109,20 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-black text-shark-white mb-4 
-           relative inline-block;
+    @apply text-4xl md:text-5xl font-black text-shark-white mb-4 relative inline-block;
   }
 
   .section-title::after {
-    @apply content-[''] absolute bottom-0 left-0 w-20 h-1 bg-shark-white;
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: -0.3rem; /* mt-3 */
+    width: 7rem; /* w-28 */
+    height: 0.25rem; /* h-1 */
+    border-radius: 9999px; /* rounded-full */
+    background: linear-gradient(90deg, #00ffff, #0077ff);
+    display: block;
   }
 
   .text-glow {

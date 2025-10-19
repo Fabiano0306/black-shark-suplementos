@@ -18,75 +18,73 @@ export const Cart = () => {
       : 'http://localhost:3000';
 
   const handleCalcularFrete = async () => {
-  if (!cep || cep.length < 8) {
-    toast.error('Digite um CEP válido!');
-    return;
-  }
-
-  if (cart.length === 0) {
-    toast.error('Carrinho vazio!');
-    return;
-  }
-
-  setLoadingFrete(true);
-  try {
-    const res = await fetch(`${API_URL}/calcular-frete`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        cepDestino: cep,
-        produtos: cart.map((item) => ({
-          id: item.id,
-          nome: item.name,
-          quantidade: item.quantity,
-          peso: item.weight || 0.5, // 🏋️ ajuste se quiser definir pesos fixos
-          largura: item.width || 15,
-          altura: item.height || 10,
-          comprimento: item.length || 20,
-          valor: item.price,
-        })),
-      }),
-    });
-
-    if (!res.ok) throw new Error('Erro ao calcular frete');
-    const data = await res.json();
-
-    console.log('📦 Resposta do servidor:', data);
-
-    const fretes = data.fretes;
-    if (Array.isArray(fretes) && fretes.length > 0) {
-      const fretesValidos = fretes.filter((f) => f.valor && !f.erro);
-
-      if (fretesValidos.length === 0) {
-        toast.error('Nenhum serviço de frete disponível para este CEP.');
-        return;
-      }
-
-      const melhor = fretesValidos.reduce((menor, atual) => {
-        const valorMenor = parseFloat(menor.valor.replace(/[R$\s]/g, '').replace(',', '.'));
-        const valorAtual = parseFloat(atual.valor.replace(/[R$\s]/g, '').replace(',', '.'));
-        return valorAtual < valorMenor ? atual : menor;
-      });
-
-      setFrete({
-        servico: melhor.servico,
-        valor: melhor.valor.replace('R$ ', ''),
-        prazo: melhor.prazo,
-      });
-
-      toast.success(`Frete ${melhor.servico}: ${melhor.valor} — ${melhor.prazo}`);
-    } else {
-      toast.error('Não foi possível calcular o frete.');
+    if (!cep || cep.length < 8) {
+      toast.error('Digite um CEP válido!');
+      return;
     }
-  } catch (error) {
-    console.error('Erro ao calcular frete:', error);
-    toast.error('Erro ao calcular o frete.');
-  } finally {
-    setLoadingFrete(false);
-  }
-};
 
+    if (cart.length === 0) {
+      toast.error('Carrinho vazio!');
+      return;
+    }
 
+    setLoadingFrete(true);
+    try {
+      const res = await fetch(`${API_URL}/calcular-frete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cepDestino: cep,
+          produtos: cart.map((item) => ({
+            id: item.id,
+            nome: item.name,
+            quantidade: item.quantity,
+            peso: item.weight || 0.5,
+            largura: item.width || 15,
+            altura: item.height || 10,
+            comprimento: item.length || 20,
+            valor: item.price,
+          })),
+        }),
+      });
+
+      if (!res.ok) throw new Error('Erro ao calcular frete');
+      const data = await res.json();
+
+      console.log('📦 Resposta do servidor:', data);
+
+      const fretes = data.fretes;
+      if (Array.isArray(fretes) && fretes.length > 0) {
+        const fretesValidos = fretes.filter((f) => f.valor && !f.erro);
+
+        if (fretesValidos.length === 0) {
+          toast.error('Nenhum serviço de frete disponível para este CEP.');
+          return;
+        }
+
+        const melhor = fretesValidos.reduce((menor, atual) => {
+          const valorMenor = parseFloat(menor.valor.replace(/[R$\s]/g, '').replace(',', '.'));
+          const valorAtual = parseFloat(atual.valor.replace(/[R$\s]/g, '').replace(',', '.'));
+          return valorAtual < valorMenor ? atual : menor;
+        });
+
+        setFrete({
+          servico: melhor.servico,
+          valor: melhor.valor.replace('R$ ', ''),
+          prazo: melhor.prazo,
+        });
+
+        toast.success(`Frete ${melhor.servico}: ${melhor.valor} — ${melhor.prazo}`);
+      } else {
+        toast.error('Não foi possível calcular o frete.');
+      }
+    } catch (error) {
+      console.error('Erro ao calcular frete:', error);
+      toast.error('Erro ao calcular o frete.');
+    } finally {
+      setLoadingFrete(false);
+    }
+  };
 
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) {
@@ -164,46 +162,50 @@ export const Cart = () => {
         <div className="max-w-5xl mx-auto">
           <h2 className="section-title text-center mb-12">SEU CARRINHO</h2>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Itens do Carrinho */}
             <div className="lg:col-span-2 space-y-4">
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+                  className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full overflow-hidden"
                 >
-                  <img src={item.image} alt={item.name} className="w-20 h-20 object-contain" />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-20 h-20 object-contain flex-shrink-0 mx-auto sm:mx-0"
+                  />
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-shark-white mb-1 line-clamp-2">{item.name}</h3>
+                    <h3 className="font-bold text-shark-white mb-1 line-clamp-2 break-words">
+                      {item.name}
+                    </h3>
                     <p className="text-shark-gray-light text-sm">R$ {item.price.toFixed(2)} cada</p>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 mt-3 sm:mt-0 flex-wrap">
                     <button
                       onClick={() => updateQuantity(item.id, -1)}
-                      className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
+                      className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors flex-shrink-0"
                     >
                       <Minus className="w-4 h-4 text-shark-white" />
                     </button>
-                    <span className="text-shark-white font-bold w-8 text-center">
-                      {item.quantity}
-                    </span>
+                    <span className="text-shark-white font-bold w-8 text-center">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, 1)}
-                      className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
+                      className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors flex-shrink-0"
                     >
                       <Plus className="w-4 h-4 text-shark-white" />
                     </button>
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="ml-2 w-8 h-8 flex items-center justify-center bg-destructive hover:bg-destructive/80 rounded transition-colors"
+                      className="ml-0 sm:ml-2 w-8 h-8 flex items-center justify-center bg-destructive hover:bg-destructive/80 rounded transition-colors flex-shrink-0"
                     >
                       <Trash2 className="w-4 h-4 text-shark-white" />
                     </button>
                   </div>
 
-                  <div className="text-right sm:ml-4">
+                  <div className="text-right sm:ml-4 mt-3 sm:mt-0 min-w-0">
                     <p className="text-sm text-shark-gray-light">Subtotal</p>
                     <p className="text-xl font-bold text-shark-white">
                       R$ {(item.price * item.quantity).toFixed(2)}
@@ -219,7 +221,7 @@ export const Cart = () => {
 
             {/* Resumo do Pedido */}
             <div className="lg:col-span-1">
-              <div className="product-card p-6 sticky top-24">
+              <div className="product-card p-6 lg:sticky lg:top-24 w-full">
                 <h3 className="text-xl font-bold text-shark-white mb-6">Resumo do Pedido</h3>
 
                 <div className="space-y-4 mb-6">
@@ -233,7 +235,7 @@ export const Cart = () => {
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
                       placeholder="Digite seu nome"
-                      className="w-full px-4 py-2 bg-shark-gray-dark border border-shark-gray rounded-lg text-shark-white placeholder:text-shark-gray-light focus:outline-none focus:border-shark-white transition-colors"
+                      className="w-full px-4 py-2 bg-shark-gray-dark border border-shark-gray rounded-lg text-shark-white placeholder:text-shark-gray-light focus:outline-none focus:border-shark-white transition-colors min-w-0"
                     />
                   </div>
 
@@ -272,31 +274,28 @@ export const Cart = () => {
                       <label className="block text-shark-gray-light text-sm mb-2">
                         CEP para entrega
                       </label>
-                        <div className="flex items-center gap-2 min-w-0">
-                          <input
-                            type="text"
-                            value={cep}
-                            onChange={(e) => setCep(e.target.value)}
-                            placeholder="Digite seu CEP"
-                            className="flex-1 h-12 px-3 sm:px-4 bg-[#1a1a1a] border border-gray-600 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:border-white transition-colors max-w-full min-w-0"
-                          />
-                          <button
-  onClick={handleCalcularFrete}
-  disabled={loadingFrete}
-  className={`flex-shrink-0 h-10 px-3 sm:px-4 rounded-lg flex items-center justify-center font-semibold transition-colors
+                      <div className="flex items-center gap-2 min-w-0">
+                        <input
+                          type="text"
+                          value={cep}
+                          onChange={(e) => setCep(e.target.value)}
+                          placeholder="Digite seu CEP"
+                          className="flex-1 h-12 px-3 sm:px-4 bg-[#1a1a1a] border border-gray-600 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:border-white transition-colors max-w-full min-w-0"
+                        />
+                        <button
+                          onClick={handleCalcularFrete}
+                          disabled={loadingFrete}
+                          className={`flex-shrink-0 h-10 px-3 sm:px-4 rounded-lg flex items-center justify-center font-semibold transition-colors
     ${loadingFrete ? 'bg-gray-600 text-gray-300' : 'bg-[#e50914] hover:bg-[#b40810] text-white'}`}
->
-  {loadingFrete ? 'Calculando...' : 'Calcular'}
-</button>
-
-                        </div>
-
+                        >
+                          {loadingFrete ? 'Calculando...' : 'Calcular'}
+                        </button>
+                      </div>
 
                       {frete && (
-                        <div className="mt-3 text-shark-gray-light text-sm">
+                        <div className="mt-3 text-shark-gray-light text-sm break-words">
                           <p>
-                            🚚 <strong>{frete.servico}</strong>: R$ {frete.valor} —{' '}
-                            {frete.prazo} 
+                            🚚 <strong>{frete.servico}</strong>: R$ {frete.valor} — {frete.prazo}
                           </p>
                         </div>
                       )}

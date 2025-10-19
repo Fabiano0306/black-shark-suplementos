@@ -33,10 +33,16 @@ export const Footer = () => {
                 <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 <span>(47) 99190-6158</span>
               </a>
-              <div className="flex items-center gap-3 text-shark-gray-light">
-                <MapPin className="w-5 h-5" />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=89140000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-shark-gray-light hover:text-shark-white transition-colors group"
+                aria-label="Abrir CEP 89140-000 no Google Maps"
+              >
+                <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 <span>Presidente Getúlio - SC</span>
-              </div>
+              </a>
             </div>
           </div>
 

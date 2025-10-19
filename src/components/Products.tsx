@@ -46,7 +46,7 @@ export const Products = () => {
     <section id="produtos" className="py-20 bg-shark-black relative">
       <div className="container mx-auto px-4">
         {/* Título */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="mb-12 animate-fade-in text-left md:text-center">
           <h2 className="section-title">NOSSOS PRODUTOS</h2>
           <p className="text-shark-gray-light mt-4 text-lg">
             Selecione os melhores suplementos para seus objetivos
