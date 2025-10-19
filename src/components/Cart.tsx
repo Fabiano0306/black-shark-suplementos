@@ -296,7 +296,7 @@ export const Cart = () => {
                         <div className="mt-3 text-shark-gray-light text-sm">
                           <p>
                             🚚 <strong>{frete.servico}</strong>: R$ {frete.valor} —{' '}
-                            {frete.prazo} dias úteis
+                            {frete.prazo} 
                           </p>
                         </div>
                       )}
