@@ -6,7 +6,13 @@ export interface Product {
   image: string;
   category: string;
   description?: string;
+  flavor?: string;
+  selectedFlavor?: string;
+  flavors?: string[]; // Adicionado para suportar múltiplos sabores como string separada por vírgulas
+  unavailableFlavors?: string[]; // Adicionado para sabores indisponíveis
   isBestSeller?: boolean;
+  badge?: string;
+  nutritionInfoImage?: string;
 
   // 🔽 Campos adicionados para cálculo de frete (Melhor Envio)
   weight?: number;   // peso em kg

@@ -1,307 +1,561 @@
 import { Product } from '@/types/product';
 
-import wheyImage from '@/assets/whey-protein.png';
-import creatinaImage from '@/assets/creatina.png';
-import preTreinoImage from '@/assets/pre-treino.png';
-import bcaaImage from '@/assets/bcaa.png';
+import chaAbdomen from '@/assets/cha-abdomen.png';
+import nightAbdomen from '@/assets/night-abdomen.png';
+import dimethylex from '@/assets/dimethylex.png';
+import thermoflame from '@/assets/thermoflame.png';
+import clembuterunder from '@/assets/clembuterunder.png';
+import xcarnitine from '@/assets/xcarnitine.png';
+import wheyBlack from '@/assets/whey-black.png';
+import wheymax from '@/assets/whey100-max-titanium-chocolate.png';
+import proteinCrush from '@/assets/proteinCrush.png';
+import wheySharkpro from '@/assets/wheySharkpro.png';
+import wheyIso from '@/assets/wheyIso.png';
+import carnibol from '@/assets/carnibol.png';
+import beef from '@/assets/100beef.png';
+import evorapw from '@/assets/evorapw.png';
+import insanevolk from '@/assets/insanevolk.png';
+import panic from '@/assets/panic.png';
+import evora from '@/assets/evora.png';
+import warzone from '@/assets/warzone.png';
+import crackrumble from '@/assets/crackrumble.png';
+import ectoplasma from '@/assets/ectoplasma.png';
+import hipershark from '@/assets/hipershark.png';
+import glutamina from '@/assets/glutamina.png';
+import creatinaunder from '@/assets/creatinaunder.png';
+import hydrolitelimao from '@/assets/hydrolitelimao.png';
+import hydrax from '@/assets/hydrax.png';
+import energy from '@/assets/energy.png';
+import vitaminaD2000 from '@/assets/vitaminaD2000.png';
+import vitaminaC500 from '@/assets/vitaminaC500.png';
+import hemovital from '@/assets/hemovital.png';
+import multidux from '@/assets/multidux.png';
+import multidux90 from '@/assets/multidux90.png';
+import vitac from '@/assets/vitac.png';
+import omega3 from '@/assets/omega3.png';
+import biotina from '@/assets/biotina.png';
+import colageno from '@/assets/colageno.png';
+import cartiflan from '@/assets/cartiflan.png';
+import cartiflanultra from '@/assets/cartiflanultra.png';
+import magnesio from '@/assets/magnesio.png';
+import melatoninalauton from '@/assets/melatoninalauton.png';
+import melatonin from '@/assets/melatonin.png';
+import tryptophan from '@/assets/tryptophan.png';
+import leitinho from '@/assets/leitinho.png';
+import panicsache from '@/assets/panicsache.png';
+import barrabold from '@/assets/barrabold.png';
+import barrataste from '@/assets/barrataste.png';
+import barranutrata from '@/assets/barranutrata.png';
+import warzonesache from '@/assets/warzonesache1.png';
+import chaAbdomenNutricional from '@/assets/nutricional/cha_abdomen_nutricional.png';
+import nightAbdomenNutricional from '@/assets/nutricional/night_abdomen_nutricional.png';
+import dimethylex_nutricional from '@/assets/nutricional/dimethylex_nutricional.png';
 
 export const products: Product[] = [
-  // 🥩 Whey Protein (potes de ~900g)
-  {
-    id: 'whey-1',
-    name: 'Whey Protein Concentrado 900g',
-    price: 89.90,
-    image: wheyImage,
-    category: 'Whey Protein',
-    description: 'Proteína de alta qualidade para ganho de massa muscular',
-    weight: 0.9,
-    width: 18,
-    height: 23,
-    length: 18,
-  },
-  {
-    id: 'whey-2',
-    name: 'Whey Protein Isolado 900g',
-    price: 119.90,
-    image: wheyImage,
-    category: 'Whey Protein',
-    description: 'Absorção rápida e baixo teor de gordura',
-    isBestSeller: true,
-    weight: 0.9,
-    width: 18,
-    height: 23,
-    length: 18,
-  },
-  {
-    id: 'whey-3',
-    name: 'Whey Protein Hidrolisado 900g',
-    price: 149.90,
-    image: wheyImage,
-    category: 'Whey Protein',
-    description: 'Máxima absorção para resultados rápidos',
-    weight: 0.9,
-    width: 18,
-    height: 23,
-    length: 18,
-  },
+  // 🧘 Emagrecedores e Termogênicos
+  // HOT 🔥
+ {
+  id: 'cha-abdomen-bodyaction-140g',
+  name: 'Chá Abdômen - Body Action - 140g',
+  price: 79.90,
+  image: chaAbdomen,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Chá termogênico com ingredientes naturais para auxiliar na queima de gordura.',
+  nutritionInfoImage: chaAbdomenNutricional,
+  weight: 0.20, width: 8, height: 10, length: 8,
+},
+{
+  id: 'night-abdomen-bodyaction-60caps',
+  name: 'Night Abdomen - Body Action - 60caps',
+  price: 109.90,
+  image: nightAbdomen,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Suplemento noturno que auxilia na queima de gordura durante o sono.',
+  nutritionInfoImage: nightAbdomenNutricional,
+  weight: 0.25, width: 7, height: 12, length: 7,
+},
+{
+  id: 'dimethylex-underlabz-60caps',
+  name: 'Dimethylex - Under Labz - 60caps',
+  price: 119.90,
+  image: dimethylex,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Termogênico potente para aumento de energia e definição corporal.',
+  nutritionInfoImage: dimethylex_nutricional,
+  weight: 0.25, width: 7, height: 12, length: 7,
+  badge: 'Novo 🔥'
+},
+{
+  id: 'thermo-flame-blackskull-60caps',
+  name: 'Thermo Flame - Black Skull - 60caps',
+  price: 49.90,
+  image: thermoflame,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Suplemento termogênico para queima de gordura e aumento de energia.',
+  weight: 0.25, width: 7, height: 12, length: 7,
+},
+{
+  id: 'clembuter-underlabz-250ml',
+  name: 'Clembuter Under - Under Labz - 250ml (50 doses)',
+  price: 139.90,
+  image: clembuterunder,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Termogênico líquido concentrado para definição e energia.',
+  flavors: ['Green Apple', 'Red Fruits', 'Yellow Fruits'],
+  weight: 0.60, width: 7, height: 18, length: 7,
+  badge: 'Novo 🔥'
+},
+{
+  id: 'x-carnitine-underlabz-480ml',
+  name: 'X-Carnitine Termogênico - Under Labz - 480ml (48 doses)',
+  price: 139.90,
+  image: xcarnitine,
+  category: 'Termogênico / Emagrecedores',
+  description: 'Suplemento líquido com carnitina para aumento de energia e metabolismo.',
+  flavors: ['Yellow Fruits'],
+  weight: 0.60, width: 7, height: 18, length: 7,
+},
 
-  // ⚡ Creatina (~300g, pote pequeno)
-  {
-    id: 'creatina-1',
-    name: 'Creatina Monohidratada 300g',
-    price: 59.90,
-    image: creatinaImage,
-    category: 'Creatina',
-    description: 'Aumento de força e performance',
-    isBestSeller: true,
-    weight: 0.3,
-    width: 10,
-    height: 12,
-    length: 10,
-  },
-  {
-    id: 'creatina-2',
-    name: 'Creatina Creapure 300g',
-    price: 79.90,
-    image: creatinaImage,
-    category: 'Creatina',
-    description: 'Creatina premium importada',
-    weight: 0.3,
-    width: 10,
-    height: 12,
-    length: 10,
-  },
+// Whey Proteins (900g)
+{
+  id: 'whey100hd-blackskull-900g',
+  name: 'Whey 100% HD - Black Skull (Gourmet) - 900g',
+  price: 95.00,
+  image: wheyBlack,
+  category: 'Whey Protein',
+  description: 'Proteína concentrada para ganho de massa muscular e recuperação.',
+  flavors: ['Morango'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: '100whey-maxtitanium-900g',
+  name: '100% Whey - Max Titanium - 900g',
+  price: 149.90,
+  image: wheymax,
+  category: 'Whey Protein',
+  description: 'Whey protein concentrado de alta qualidade.',
+  flavors: ['Chocolate', 'Morango', 'Baunilha'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: 'proteincrush-underlabz-900g',
+  name: 'Protein Crush - Under Labz - 900g',
+  price: 149.90,
+  image: proteinCrush,
+  category: 'Whey Protein',
+  description: 'Blend proteico saboroso e cremoso.',
+  flavors: ['Dulce de Leche', 'Vitamina de Frutas', 'Alpine Cookies Bear N\' Milk Bear', 'Swiss ChocoBear', 'SWISS CARAMEL MACCHIATO', 'Strawbear Swiss'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: '100whey-sharkpro-900g',
+  name: '100% Whey Protein - Shark Pro - 900g',
+  price: 149.90,
+  image: wheySharkpro,
+  category: 'Whey Protein',
+  description: 'Whey protein com excelente sabor e qualidade.',
+  flavors: ['Chocolate', 'Leite Ninho'],
+  unavailableFlavors: ['Leite Ninho'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: 'wheyiso-integralmedica-900g',
+  name: 'Whey ISO - Integral Médica - 900g',
+  price: 285.00,
+  image: wheyIso,
+  category: 'Whey Protein',
+  description: 'Whey protein isolado com rápida absorção.',
+  flavors: ['Chocolate', 'Baunilha'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: 'carnibol-darkness-900g',
+  name: 'Carnibol - Darkness - 900g',
+  price: 199.90,
+  image: carnibol,
+  category: 'Whey Protein',
+  description: 'Proteína de carne para ganho de massa muscular.',
+  flavors: ['Chocolate', 'Baunilha', 'Blueberry'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
+{
+  id: '100beef-adaptogen-900g',
+  name: '100% Beef - Adaptogen - 900g',
+  price: 214.00,
+  image: beef,
+  category: 'Whey Protein',
+  description: 'Proteína isolada de carne com alto teor proteico.',
+  flavors: ['Chocolate'],
+  weight: 1.10, width: 14, height: 23, length: 14
+},
 
-  // 🚀 Pré-Treino (~300g, pote médio)
-  {
-    id: 'pre-1',
-    name: 'Pré-Treino Extreme 300g',
-    price: 69.90,
-    image: preTreinoImage,
-    category: 'Pré-Treino',
-    description: 'Energia e foco para treinos intensos',
-    isBestSeller: true,
-    weight: 0.3,
-    width: 11,
-    height: 13,
-    length: 11,
-  },
-  {
-    id: 'pre-2',
-    name: 'Pré-Treino Hardcore 300g',
-    price: 89.90,
-    image: preTreinoImage,
-    category: 'Pré-Treino',
-    description: 'Máxima explosão muscular',
-    weight: 0.3,
-    width: 11,
-    height: 13,
-    length: 11,
-  },
+// Pré-Treinos
+// 150g
+{
+  id: 'evora-darkness-150g',
+  name: 'Évora PW (Pré-treino) - Darkness - 150g',
+  price: 89.90,
+  image: evorapw,
+  category: 'Pré-Treino',
+  description: 'Pré-treino com energia e foco intensos.',
+  flavors: ['Uva', 'Maçã Verde'],
+  weight: 0.35, width: 10, height: 12, length: 10
+},
+{
+  id: 'insanevolk-nfc-150g',
+  name: 'Insane Volk (Pré-treino) - NFC - 150g',
+  price: 79.90,
+  image: insanevolk,
+  category: 'Pré-Treino',
+  description: 'Pré-treino para explosão e energia.',
+  flavors: ['Maçã Verde', 'Frutas Vermelhas'],
+  weight: 0.35, width: 10, height: 12, length: 10,
+  badge: 'Novo 🔥'
+},
 
-  // 🔥 Termogênicos (potes pequenos com cápsulas)
-  {
-    id: 'termo-1',
-    name: 'Termogênico Black Fire 60 caps',
-    price: 54.90,
-    image: preTreinoImage,
-    category: 'Termogênicos',
-    description: 'Acelera o metabolismo e queima gordura',
-    weight: 0.15,
-    width: 8,
-    height: 10,
-    length: 8,
-  },
-  {
-    id: 'termo-2',
-    name: 'Termogênico Lipo 6 Black 60 caps',
-    price: 129.90,
-    image: preTreinoImage,
-    category: 'Termogênicos',
-    description: 'Fórmula premium para definição',
-    weight: 0.15,
-    width: 8,
-    height: 10,
-    length: 8,
-  },
+// 300g
+{
+  id: 'panic-adaptogen-300g',
+  name: 'Panic - Adaptogen - 300g',
+  price: 149.90,
+  image: panic,
+  category: 'Pré-Treino',
+  description: 'Pré-treino com creatina adicionada para máxima performance.',
+  flavors: ['Manga e Laranja', 'Morango', 'Abacaxi'],
+  weight: 0.40, width: 10, height: 15, length: 10
+},
+{
+  id: 'evora-darkness-300g',
+  name: 'Évora (Pré-treino) - Darkness - 300g',
+  price: 135.00,
+  image: evora,
+  category: 'Pré-Treino',
+  description: 'Versão concentrada do Évora para treinos intensos.',
+  flavors: ['Uva'],
+  weight: 0.40, width: 10, height: 15, length: 10
+},
+{
+  id: 'warzone-underlabz-300g',
+  name: 'Warzone (Pré-treino) - Under Labz - 300g',
+  price: 147.90,
+  image: warzone,
+  category: 'Pré-Treino',
+  description: 'Pré-treino de alta performance com energia extrema.',
+  flavors: ['Passion & Fury', 'Purple Heart Punch'],
+  weight: 0.40, width: 10, height: 15, length: 10
+},
+{
+  id: 'crackrumble-demonslab-300g',
+  name: 'Crack Rumble (Pré-treino) - Demons Lab - 300g',
+  price: 199.90,
+  image: crackrumble,
+  category: 'Pré-Treino',
+  description: 'Pré-treino explosivo com alta concentração de estimulantes.',
+  weight: 0.40, width: 10, height: 15, length: 10
+},
 
-  // 💪 BCAA / Aminoácidos (cápsulas e pó)
-  {
-    id: 'bcaa-1',
-    name: 'BCAA 2:1:1 - 120 caps',
-    price: 49.90,
-    image: bcaaImage,
-    category: 'BCAA / Aminoácidos',
-    description: 'Recuperação muscular e anti-catabólico',
-    isBestSeller: true,
-    weight: 0.2,
-    width: 9,
-    height: 11,
-    length: 9,
-  },
-  {
-    id: 'bcaa-2',
-    name: 'BCAA Powder 300g',
-    price: 69.90,
-    image: bcaaImage,
-    category: 'BCAA / Aminoácidos',
-    description: 'BCAA em pó com sabor',
-    weight: 0.3,
-    width: 11,
-    height: 13,
-    length: 11,
-  },
-  {
-    id: 'amino-1',
-    name: 'Glutamina 300g',
-    price: 59.90,
-    image: bcaaImage,
-    category: 'BCAA / Aminoácidos',
-    description: 'Recuperação e imunidade',
-    weight: 0.3,
-    width: 11,
-    height: 13,
-    length: 11,
-  },
+// 480g
+{
+  id: 'ectoplasma-demonslab-480g',
+  name: 'Ectoplasma (Pré-treino) - Demons Lab - 480g',
+  price: 219.90,
+  image: ectoplasma,
+  category: 'Pré-Treino',
+  description: 'Pré-treino avançado com máxima energia e foco.',
+  weight: 0.60, width: 12, height: 18, length: 12
+},
 
-  // 🍚 Hipercalóricos (sacos grandes 3kg)
-  {
-    id: 'hiper-1',
-    name: 'Hipercalórico Mass Gainer 3kg',
-    price: 99.90,
-    image: wheyImage,
-    category: 'Hipercalóricos',
-    description: 'Ganho de peso e massa muscular',
-    weight: 3.0,
-    width: 30,
-    height: 40,
-    length: 20,
-  },
-  {
-    id: 'hiper-2',
-    name: 'Hipercalórico Monster Mass 3kg',
-    price: 119.90,
-    image: wheyImage,
-    category: 'Hipercalóricos',
-    description: 'Alta concentração calórica',
-    weight: 3.0,
-    width: 30,
-    height: 40,
-    length: 20,
-  },
+// Hipercalóricos
+{
+  id: 'sharkmass-sharkpro-3kg',
+  name: 'Shark Mass (Hipercalórico) - Shark Pro - 3kg',
+  price: 137.00,
+  image: hipershark,
+  category: 'Hipercalóricos',
+  description: 'Hipercalórico para ganho de massa muscular.',
+  flavors: ['Morango', 'Chocolate'],
+  weight: 3.20, width: 22, height: 32, length: 22
+},
 
-  // 💊 Vitaminas e Minerais (frascos pequenos)
-  {
-    id: 'vita-1',
-    name: 'Multivitamínico Premium 60 caps',
-    price: 39.90,
-    image: bcaaImage,
-    category: 'Vitaminas e Minerais',
-    description: 'Complexo vitamínico completo',
-    weight: 0.15,
-    width: 8,
-    height: 10,
-    length: 8,
-  },
-  {
-    id: 'vita-2',
-    name: 'Ômega 3 - 120 caps',
-    price: 44.90,
-    image: bcaaImage,
-    category: 'Vitaminas e Minerais',
-    description: 'Saúde cardiovascular',
-    weight: 0.15,
-    width: 8,
-    height: 10,
-    length: 8,
-  },
-  {
-    id: 'vita-3',
-    name: 'Vitamina D3 - 60 caps',
-    price: 29.90,
-    image: bcaaImage,
-    category: 'Vitaminas e Minerais',
-    description: 'Fortalece ossos e imunidade',
-    weight: 0.1,
-    width: 7,
-    height: 9,
-    length: 7,
-  },
+// Glutamina e Creatina (300g)
+{
+  id: 'glutamina-underlabz-300g',
+  name: 'Glutamina - Under Labz - 300g',
+  price: 85.50,
+  image: glutamina,
+  category: 'Glutamina',
+  description: 'Suplemento para recuperação muscular e imunidade.',
+  weight: 0.40, width: 10, height: 15, length: 10
+},
+{
+  id: 'creatina-underlabz-300g',
+  name: 'Creatina - Under Labz - 300g',
+  price: 105.00,
+  image: creatinaunder,
+  category: 'Creatina',
+  description: 'Creatina monohidratada para aumento de força e desempenho.',
+  weight: 0.40, width: 10, height: 15, length: 10
+},
 
-  // 🍫 Barras e Snacks
-  {
-    id: 'barra-1',
-    name: 'Barra de Proteína Chocolate (Caixa 12un)',
-    price: 59.90,
-    image: wheyImage,
-    category: 'Barras e Snacks',
-    description: 'Lanche proteico prático',
-    weight: 0.8,
-    width: 18,
-    height: 8,
-    length: 22,
-  },
-  {
-    id: 'barra-2',
-    name: 'Pasta de Amendoim Integral 500g',
-    price: 24.90,
-    image: wheyImage,
-    category: 'Barras e Snacks',
-    description: 'Fonte natural de proteína e gorduras boas',
-    weight: 0.5,
-    width: 10,
-    height: 11,
-    length: 10,
-  },
+// Eletrólitos (760g–1kg)
+{
+  id: 'hydrolite-dux-1kg',
+  name: 'Hydrolite - DUX - 1kg',
+  price: 105.00,
+  image: hydrolitelimao,
+  category: 'Pré e Intra-Treino / Eletrólitos',
+  description: 'Repositor eletrolítico para hidratação durante o treino.',
+  flavors: ['Limão'],
+  weight: 1.00, width: 12, height: 20, length: 12
+},
+{
+  id: 'hydra-integralmedica-760g',
+  name: 'Hydra-X - Integral Médica - 760g',
+  price: 145.00,
+  image: hydrax,
+  category: 'Pré e Intra-Treino / Eletrólitos',
+  description: 'Suplemento com eletrólitos para hidratação e recuperação.',
+  flavors: ['Uva'],
+  weight: 0.90, width: 12, height: 20, length: 12
+},
+{
+  id: 'energykick-dux-1kg',
+  name: 'Energy Kick - DUX - 1kg',
+  price: 105.00,
+  image: energy,
+  category: 'Pré e Intra-Treino / Eletrólitos',
+  description: 'Pré e intra-treino com energia e eletrólitos.',
+  flavors: ['Laranja'],
+  weight: 1.00, width: 12, height: 20, length: 12
+},
 
-  // 🎁 Combos Promocionais (embalagem composta)
-  {
-    id: 'combo-1',
-    name: 'Combo Iniciante (Whey + Creatina)',
-    price: 129.90,
-    image: wheyImage,
-    category: 'Combos Promocionais',
-    description: 'Kit completo para começar',
-    weight: 1.2,
-    width: 25,
-    height: 25,
-    length: 25,
-  },
-  {
-    id: 'combo-2',
-    name: 'Combo Performance (Whey + Pré + BCAA)',
-    price: 189.90,
-    image: wheyImage,
-    category: 'Combos Promocionais',
-    description: 'Máxima performance nos treinos',
-    isBestSeller: true,
-    weight: 1.5,
-    width: 28,
-    height: 28,
-    length: 28,
-  },
-  {
-    id: 'combo-3',
-    name: 'Combo Definição (Whey + Termogênico)',
-    price: 159.90,
-    image: wheyImage,
-    category: 'Combos Promocionais',
-    description: 'Para quem busca definição muscular',
-    weight: 1.1,
-    width: 25,
-    height: 25,
-    length: 25,
-  },
+// Vitaminas e Minerais (cápsulas)
+{
+  id: 'vitaminad3-lauton-60comp',
+  name: 'Vitamina D3 2000ui - Lauton - 60comp',
+  price: 61.50,
+  image: vitaminaD2000,
+  category: 'Vitaminas e Minerais',
+  description: 'Vitamina D3 para suporte ósseo e imunidade.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'vitaminaczinco-lauton-60comp',
+  name: 'Vitamina C 500 + Zinco Quelato - Lauton - 60comp',
+  price: 55.00,
+  image: vitaminaC500,
+  category: 'Vitaminas e Minerais',
+  description: 'Vitamina C com Zinco para imunidade e antioxidante.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'hemovital-lauton-60comp',
+  name: 'Hemovital (Multi Vitamínico) - Lauton - 60comp',
+  price: 79.90,
+  image: hemovital,
+  category: 'Vitaminas e Minerais',
+  description: 'Multivitamínico completo para saúde geral.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'multivitaminico-dux-30caps',
+  name: 'Multi Vitamínico - DUX - 30caps',
+  price: 69.90,
+  image: multidux,
+  category: 'Vitaminas e Minerais',
+  description: 'Multivitamínico em cápsulas com alta biodisponibilidade.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'multivitaminico-dux-90caps',
+  name: 'Multi Vitamínico - DUX - 90caps',
+  price: 119.90,
+  image: multidux90,
+  category: 'Vitaminas e Minerais',
+  description: 'Multivitamínico completo com 90 cápsulas.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'vitac-3vsnutrition-60caps',
+  name: 'Vita C - 3VS Nutrition - 1000mg - 60caps',
+  price: 55.00,
+  image: vitac,
+  category: 'Vitaminas e Minerais',
+  description: 'Vitamina C com alta concentração para imunidade.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'omeg3-macrophytus-120caps',
+  name: 'Ômega 3 - Macrophytus - 120caps',
+  price: 89.90,
+  image: omega3,
+  category: 'Vitaminas e Minerais',
+  description: 'Ômega 3 para saúde cardiovascular e cognitiva.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'biotina-macrophytus-50caps',
+  name: 'Biotina - Macrophytus - 50caps',
+  price: 55.00,
+  image: biotina,
+  category: 'Vitaminas e Minerais',
+  description: 'Suplemento de biotina para cabelo e unhas.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+
+// Colágenos
+{
+  id: 'collagenrenew-nutrify-300g',
+  name: 'Collagen Renew - Nutrify - 300g',
+  price: 105.00,
+  image: colageno,
+  category: 'Colágenos',
+  description: 'Colágeno hidrolisado com vitaminas e minerais.',
+  flavors: ['Maçã Verde', 'Laranja', 'Morango', 'Abacaxi', 'Jabuticaba', 'Neutro'],
+  weight: 0.45, width: 10, height: 15, length: 10
+},
+{
+  id: 'cartiflanantiartri-macrophytus-30caps',
+  name: 'Cartiflan Anti Artri - Macrophytus - 30caps',
+  price: 89.90,
+  image: cartiflan,
+  category: 'Colágenos',
+  description: 'Colágeno tipo 2 para articulações e mobilidade.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'cartiflanultra-macrophytus-30caps',
+  name: 'Cartiflan Ultra - Macrophytus - 30caps',
+  price: 85.50,
+  image: cartiflanultra,
+  category: 'Colágenos',
+  description: 'Suplemento de colágeno tipo 2 com ação anti-inflamatória.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+
+// Saúde e Sono
+{
+  id: 'magnésio-inositol-bodyaction-210g',
+  name: 'Magnésio & Inositol - Body Action - 210g',
+  price: 119.90,
+  image: magnesio,
+  category: 'Saúde e Sono',
+  description: 'Suplemento para relaxamento e melhora da qualidade do sono.',
+  flavors: ['Maracujá', 'Frutas Vermelhas'],
+  weight: 0.30, width: 8, height: 12, length: 8
+},
+{
+  id: 'melatonina-lauton-30ml',
+  name: 'Melatonina - Lauton - 30ml',
+  price: 89.90,
+  image: melatoninalauton,
+  category: 'Saúde e Sono',
+  description: 'Suplemento líquido de melatonina para melhor sono.',
+  weight: 0.20, width: 5, height: 10, length: 5
+},
+{
+  id: 'melatonin-vitaminlife-60caps',
+  name: 'Melatonin - Vitaminlife - 60caps',
+  price: 99.50,
+  image: melatonin,
+  category: 'Saúde e Sono',
+  description: 'Suplemento de melatonina em cápsulas.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'tryptophan-nutrify-60caps',
+  name: 'Tryptophan - Nutrify - 60caps',
+  price: 94.90,
+  image: tryptophan,
+  category: 'Saúde e Sono',
+  description: 'Aminoácido essencial que auxilia na produção de serotonina e melatonina.',
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+
+// Pasta de amendoim - Jar (assumi preço R$ 24.90 e tamanho estilo pote 300g)
+{
+  id: 'pasta-amendoim-laganexa-300g',
+  name: 'Pasta de Amendoim - Lá Ganexa - 300g',
+  price: 24.90,
+  image: leitinho,
+  category: 'Barras e Pastas',
+  description: 'Pasta de amendoim artesanal - cremosa e saborosa.',
+  flavors: ['Mousse de Brigadeiro', 'Leitinho', 'Leitinho Black'],
+  weight: 0.35, width: 10, height: 12, length: 10
+},
+
+// Sachê pré-treino Warzone 10g (preço informado R$ 10,50)
+{
+  id: 'warzone-sache-10g',
+  name: 'Warzone - Sachê Pré-Treino - 10g',
+  price: 10.50,
+  image: warzonesache,
+  category: 'Pré-Treino',
+  description: 'Sachê pré-treino para testar doses — ideal para experimentar sabores.',
+  flavors: ['Blood Natle', 'Green Bomb'],
+  weight: 0.03, width: 8, height: 2, length: 12
+},
+
+// Sachê pré-treino Panic 10g (preço informado R$ 9,50)
+{
+  id: 'panic-sache-10g',
+  name: 'Panic - Sachê Pré-Treino - 10g',
+  price: 9.50,
+  image: panicsache,
+  category: 'Pré-Treino',
+  description: 'Sachê do pré-treino Panic — dose única para testar o produto.',
+  flavors: ['Limonada', 'Maçã Verde'],
+  weight: 0.03, width: 8, height: 2, length: 12
+},
+
+// Barra de proteínas BOLD (preço informado R$ 17,00)
+{
+  id: 'barra-bold-protein',
+  name: 'Barra de Proteínas BOLD - 60g',
+  price: 17.00,
+  image: barrabold,
+  category: 'Barras e Pastas',
+  description: 'Barra proteica saborosa, ótima para lanches e pós-treino.',
+  flavors: ['Leite e Avelã', 'Bombom Crocante', 'Trufa de Chocolate', 'Cookies Black'],
+  weight: 0.08, width: 6, height: 2, length: 18
+},
+
+// Barra de proteínas TASTE (preço informado R$ 12,50)
+{
+  id: 'barra-taste-protein',
+  name: 'Barra de Proteínas TASTE - 45g',
+  price: 12.50,
+  image: barrataste,
+  category: 'Barras e Pastas',
+  description: 'Barra proteica TASTE — opção leve e saborosa.',
+  flavors: ['Trufa de Chocolate', 'Doce de Leite (sabor argentino)'],
+  weight: 0.07, width: 6, height: 2, length: 18
+},
+
+// Barra de proteína NUTRATA (preço informado R$ 13,50)
+{
+  id: 'barra-nutrata-protein',
+  name: 'Barra de Proteína NUTRATA - 45g',
+  price: 13.50,
+  image: barranutrata,
+  category: 'Barras e Pastas',
+  description: 'Barra NUTRATA com sabor Dark Caramel — equilíbrio entre doce e proteína.',
+  flavors: ['Dark Caramel Protein'],
+  weight: 0.07, width: 6, height: 2, length: 18
+},
 ];
+
 
 export const categories = [
   'Whey Protein',
   'Creatina',
+  'Glutamina',
   'Pré-Treino',
-  'Termogênicos',
-  'BCAA / Aminoácidos',
+  'Termogênico / Emagrecedores',
   'Hipercalóricos',
   'Vitaminas e Minerais',
-  'Barras e Snacks',
-  'Combos Promocionais',
+  'Colágenos',
+  'Barras e Pastas',
+  'Saúde e Sono',
+  'Pré e Intra-Treino / Eletrólitos',
 ];

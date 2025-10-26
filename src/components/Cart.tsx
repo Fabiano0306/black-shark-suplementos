@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 export const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, totalPrice, clearCart } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalPrice, clearCart, resetShipping } = useCart();
   const [customerName, setCustomerName] = useState('');
   const [deliveryType, setDeliveryType] = useState<'retirada' | 'entrega'>('retirada');
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'debito' | 'credito'>('pix');
@@ -21,7 +21,9 @@ export const Cart = () => {
       ? 'https://black-shark-frete.onrender.com'
       : 'http://localhost:3000';
 
+  // ✅ Recalcula frete automaticamente quando o carrinho muda
   const handleCartChange = () => {
+    resetShipping();
     if (frete) {
       setFrete(null);
       setEndereco(null);
@@ -153,7 +155,10 @@ export const Cart = () => {
     }
 
     let msg = '🦈 *Novo Pedido — BLACK SHARK SUPLEMENTOS*\n\n📦 *Itens:*\n';
-    cart.forEach((i) => (msg += `• ${i.name} — ${i.quantity}x R$ ${i.price.toFixed(2)}\n`));
+    cart.forEach((i) => {
+      const flavorText = i.flavor ? ` — *${i.flavor}*` : '';
+      msg += `• ${i.name}${flavorText} — ${i.quantity}x R$ ${i.price.toFixed(2)}\n`;
+    });
 
     msg += `\n💰 *Subtotal:* R$ ${totalPrice.toFixed(2)}\n`;
     if (deliveryType === 'entrega' && frete) {
@@ -177,6 +182,7 @@ export const Cart = () => {
     toast.success('Redirecionando para WhatsApp...');
   };
 
+  // ⚠ Carrinho vazio
   if (cart.length === 0)
     return (
       <section id="carrinho" className="py-20 bg-shark-gray-dark text-center">
@@ -204,12 +210,15 @@ export const Cart = () => {
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item) => (
               <div
-                key={item.id}
+                key={item.id + (item.flavor || '')}
                 className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full overflow-hidden"
               >
                 <img src={item.image} alt={item.name} className="w-20 h-20 object-contain" />
                 <div className="flex-1">
                   <h3 className="font-bold text-shark-white mb-1">{item.name}</h3>
+                  {item.flavor && (
+                    <p className="text-sm text-shark-gray-light">Sabor: {item.flavor}</p>
+                  )}
                   <p className="text-shark-gray-light text-sm">R$ {item.price.toFixed(2)} cada</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -244,10 +253,11 @@ export const Cart = () => {
                 </div>
               </div>
             ))}
-            <button onClick={clearCart} className="btn-shark-outline w-full">
+            <button onClick={() => { clearCart(); handleCartChange(); }} className="btn-shark-outline w-full">
               Limpar Carrinho
             </button>
           </div>
+
 
           {/* Resumo */}
             <div className="lg:col-span-1">

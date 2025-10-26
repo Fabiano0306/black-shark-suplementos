@@ -10,6 +10,7 @@ interface CartContextType {
   clearCart: () => void;
   totalItems: number;
   totalPrice: number;
+  resetShipping: () => void; // ✅ Novo
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -24,43 +25,51 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem('blackshark-cart', JSON.stringify(cart));
   }, [cart]);
 
- const addToCart = (product: Product) => {
-  setCart((prevCart) => {
-    const existingItem = prevCart.find((item) => item.id === product.id);
+  // ✅ Novo método para resetar o frete salvo
+  const resetShipping = () => {
+    localStorage.removeItem('blackshark-shipping');
+  };
 
-    if (existingItem) {
-      toast.success('Quantidade atualizada no carrinho!');
-      return prevCart.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+  const addToCart = (product: Product) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(
+        (item) => item.id === product.id && item.flavor === product.flavor
       );
-    }
 
-    // 🧠 Garante medidas padrão caso o produto não tenha
-    const productWithDefaults = {
-      ...product,
-      quantity: 1,
-      weight: product.weight ?? 0.5,  // 0.5kg por padrão
-      width: product.width ?? 15,
-      height: product.height ?? 10,
-      length: product.length ?? 20,
-    };
+      if (existingItem) {
+        toast.success('Quantidade atualizada no carrinho!');
+        return prevCart.map((item) =>
+          item.id === product.id && item.flavor === product.flavor
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
 
-    toast.success('Produto adicionado ao carrinho!');
-    return [...prevCart, productWithDefaults];
-  });
-};
+      const productWithDefaults = {
+        ...product,
+        quantity: 1,
+        weight: product.weight ?? 0.5,
+        width: product.width ?? 15,
+        height: product.height ?? 10,
+        length: product.length ?? 20,
+      };
 
+      toast.success('Produto adicionado ao carrinho!');
+      return [...prevCart, productWithDefaults];
+    });
+
+    resetShipping(); // ✅ Sempre que adicionar item, reseta o frete
+  };
 
   const removeFromCart = (productId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
     toast.success('Produto removido do carrinho');
+    resetShipping(); // ✅ Reseta o frete
   };
 
   const updateQuantity = (productId: string, delta: number) => {
     setCart((prevCart) => {
-      return prevCart
+      const updatedCart = prevCart
         .map((item) => {
           if (item.id === productId) {
             const newQuantity = item.quantity + delta;
@@ -73,12 +82,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return item;
         })
         .filter((item): item is CartItem => item !== null);
+
+      resetShipping(); // ✅ Reseta o frete ao alterar quantidade
+      return updatedCart;
     });
   };
 
   const clearCart = () => {
     setCart([]);
     toast.success('Carrinho limpo!');
+    resetShipping(); // ✅ Reseta frete também
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -94,6 +107,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         clearCart,
         totalItems,
         totalPrice,
+        resetShipping, // ✅ Exportado
       }}
     >
       {children}

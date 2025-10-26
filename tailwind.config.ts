@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -53,32 +58,43 @@ export default {
         "shark-gray": "hsl(var(--shark-gray))",
         "shark-gray-light": "hsl(var(--shark-gray-light))",
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      // 🔥 Aqui entram as novas animações
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+
+        // 🔥 Animação de fogo pulsante
+        firePulse: {
+          "0%, 100%": { transform: "scale(1)", filter: "brightness(1)" },
+          "50%": { transform: "scale(1.05)", filter: "brightness(1.3)" },
+        },
+
+        // 🔥 Movimento de chama
+        flame: {
+          "0%": { transform: "translateY(5%) scaleY(1)", opacity: "0.8" },
+          "50%": { transform: "translateY(-5%) scaleY(1.2)", opacity: "1" },
+          "100%": { transform: "translateY(5%) scaleY(1)", opacity: "0.8" },
         },
       },
+
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        firePulse: "firePulse 1.5s ease-in-out infinite",
+        flame: "flame 1s ease-in-out infinite alternate",
       },
     },
   },
