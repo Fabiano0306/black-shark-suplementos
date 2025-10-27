@@ -5,12 +5,12 @@ import { toast } from 'sonner';
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, delta: number) => void;
+  removeFromCart: (productId: string, flavor?: string) => void;
+  updateQuantity: (productId: string, flavor: string | undefined, delta: number) => void;
   clearCart: () => void;
   totalItems: number;
   totalPrice: number;
-  resetShipping: () => void; // ✅ Novo
+  resetShipping: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -25,7 +25,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem('blackshark-cart', JSON.stringify(cart));
   }, [cart]);
 
-  // ✅ Novo método para resetar o frete salvo
   const resetShipping = () => {
     localStorage.removeItem('blackshark-shipping');
   };
@@ -58,20 +57,24 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return [...prevCart, productWithDefaults];
     });
 
-    resetShipping(); // ✅ Sempre que adicionar item, reseta o frete
+    resetShipping();
   };
 
-  const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  // ✅ Corrigido: agora considera o sabor
+  const removeFromCart = (productId: string, flavor?: string) => {
+    setCart((prevCart) =>
+      prevCart.filter((item) => !(item.id === productId && item.flavor === flavor))
+    );
     toast.success('Produto removido do carrinho');
-    resetShipping(); // ✅ Reseta o frete
+    resetShipping();
   };
 
-  const updateQuantity = (productId: string, delta: number) => {
+  // ✅ Corrigido: também considera o sabor
+  const updateQuantity = (productId: string, flavor: string | undefined, delta: number) => {
     setCart((prevCart) => {
       const updatedCart = prevCart
         .map((item) => {
-          if (item.id === productId) {
+          if (item.id === productId && item.flavor === flavor) {
             const newQuantity = item.quantity + delta;
             if (newQuantity <= 0) {
               toast.success('Produto removido do carrinho');
@@ -83,7 +86,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         })
         .filter((item): item is CartItem => item !== null);
 
-      resetShipping(); // ✅ Reseta o frete ao alterar quantidade
+      resetShipping();
       return updatedCart;
     });
   };
@@ -91,7 +94,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const clearCart = () => {
     setCart([]);
     toast.success('Carrinho limpo!');
-    resetShipping(); // ✅ Reseta frete também
+    resetShipping();
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -107,7 +110,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         clearCart,
         totalItems,
         totalPrice,
-        resetShipping, // ✅ Exportado
+        resetShipping,
       }}
     >
       {children}

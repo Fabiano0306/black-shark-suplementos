@@ -209,50 +209,51 @@ export const Cart = () => {
           {/* Itens */}
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item) => (
-              <div
-                key={item.id + (item.flavor || '')}
-                className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full overflow-hidden"
-              >
-                <img src={item.image} alt={item.name} className="w-20 h-20 object-contain" />
-                <div className="flex-1">
-                  <h3 className="font-bold text-shark-white mb-1">{item.name}</h3>
-                  {item.flavor && (
-                    <p className="text-sm text-shark-gray-light">Sabor: {item.flavor}</p>
-                  )}
-                  <p className="text-shark-gray-light text-sm">R$ {item.price.toFixed(2)} cada</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => {
-                      updateQuantity(item.id, -1);
-                      handleCartChange();
-                    }}
-                    className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
-                  >
-                    <Minus className="w-4 h-4 text-shark-white" />
-                  </button>
-                  <span className="text-shark-white font-bold w-8 text-center">{item.quantity}</span>
-                  <button
-                    onClick={() => {
-                      updateQuantity(item.id, 1);
-                      handleCartChange();
-                    }}
-                    className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
-                  >
-                    <Plus className="w-4 h-4 text-shark-white" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      removeFromCart(item.id);
-                      handleCartChange();
-                    }}
-                    className="w-8 h-8 flex items-center justify-center bg-destructive hover:bg-destructive/80 rounded transition-colors"
-                  >
-                    <Trash2 className="w-4 h-4 text-shark-white" />
-                  </button>
-                </div>
-              </div>
-            ))}
+  <div
+    key={item.id + (item.flavor || '')}
+    className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full overflow-hidden"
+  >
+    <img src={item.image} alt={item.name} className="w-20 h-20 object-contain" />
+    <div className="flex-1">
+      <h3 className="font-bold text-shark-white mb-1">{item.name}</h3>
+      {item.flavor && (
+        <p className="text-sm text-shark-gray-light">Sabor: {item.flavor}</p>
+      )}
+      <p className="text-shark-gray-light text-sm">R$ {item.price.toFixed(2)} cada</p>
+    </div>
+    <div className="flex items-center gap-3">
+      <button
+        onClick={() => {
+          updateQuantity(item.id, item.flavor, -1); // ✅ Agora passa também o sabor
+          handleCartChange();
+        }}
+        className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
+      >
+        <Minus className="w-4 h-4 text-shark-white" />
+      </button>
+      <span className="text-shark-white font-bold w-8 text-center">{item.quantity}</span>
+      <button
+        onClick={() => {
+          updateQuantity(item.id, item.flavor, 1); // ✅ Aqui também
+          handleCartChange();
+        }}
+        className="w-8 h-8 flex items-center justify-center bg-shark-gray hover:bg-shark-gray-light rounded transition-colors"
+      >
+        <Plus className="w-4 h-4 text-shark-white" />
+      </button>
+      <button
+        onClick={() => {
+          removeFromCart(item.id, item.flavor); // ✅ E aqui também
+          handleCartChange();
+        }}
+        className="w-8 h-8 flex items-center justify-center bg-destructive hover:bg-destructive/80 rounded transition-colors"
+      >
+        <Trash2 className="w-4 h-4 text-shark-white" />
+      </button>
+    </div>
+  </div>
+))}
+
             <button onClick={() => { clearCart(); handleCartChange(); }} className="btn-shark-outline w-full">
               Limpar Carrinho
             </button>

@@ -50,6 +50,16 @@ import warzonesache from '@/assets/warzonesache1.png';
 import chaAbdomenNutricional from '@/assets/nutricional/cha_abdomen_nutricional.png';
 import nightAbdomenNutricional from '@/assets/nutricional/night_abdomen_nutricional.png';
 import dimethylex_nutricional from '@/assets/nutricional/dimethylex_nutricional.png';
+import thermoflame_nutricional from '@/assets/nutricional/thermoflame_nutricional.png';
+import clembuterunder_nutricional from '@/assets/nutricional/clembuterunder_nutricional.png';
+import xcarnitine_nutricional from '@/assets/nutricional/xcarnitine_nutricional.png';
+import wheyblackskull_nutricional from '@/assets/nutricional/wheyblackskull_nutricional.png';
+import wheymaxtitanium_nutricional from '@/assets/nutricional/wheymaxtitanium_nutricional.png';
+import proteincrush_nutricional from '@/assets/nutricional/proteincrush_nutricional.png';
+import wheyshark100_nutricional from '@/assets/nutricional/wheyshark100_nutricional.png';
+import wheyiso_nutricional from '@/assets/nutricional/wheyiso_nutricional.png';
+import carnibol_nutricional from '@/assets/nutricional/carnibol_nutricional.png';
+import beef_nutricional from '@/assets/nutricional/beef_nutricional.png';
 
 export const products: Product[] = [
   // 🧘 Emagrecedores e Termogênicos
@@ -92,6 +102,7 @@ export const products: Product[] = [
   image: thermoflame,
   category: 'Termogênico / Emagrecedores',
   description: 'Suplemento termogênico para queima de gordura e aumento de energia.',
+  nutritionInfoImage: thermoflame_nutricional,
   weight: 0.25, width: 7, height: 12, length: 7,
 },
 {
@@ -102,6 +113,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Termogênico líquido concentrado para definição e energia.',
   flavors: ['Green Apple', 'Red Fruits', 'Yellow Fruits'],
+  nutritionInfoImage: clembuterunder_nutricional,
   weight: 0.60, width: 7, height: 18, length: 7,
   badge: 'Novo 🔥'
 },
@@ -113,6 +125,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Suplemento líquido com carnitina para aumento de energia e metabolismo.',
   flavors: ['Yellow Fruits'],
+  nutritionInfoImage: xcarnitine_nutricional,
   weight: 0.60, width: 7, height: 18, length: 7,
 },
 
@@ -125,6 +138,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Proteína concentrada para ganho de massa muscular e recuperação.',
   flavors: ['Morango'],
+  nutritionInfoImage: wheyblackskull_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -135,6 +149,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Whey protein concentrado de alta qualidade.',
   flavors: ['Chocolate', 'Morango', 'Baunilha'],
+  nutritionInfoImage: wheymaxtitanium_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -145,6 +160,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Blend proteico saboroso e cremoso.',
   flavors: ['Dulce de Leche', 'Vitamina de Frutas', 'Alpine Cookies Bear N\' Milk Bear', 'Swiss ChocoBear', 'SWISS CARAMEL MACCHIATO', 'Strawbear Swiss'],
+  nutritionInfoImage: proteincrush_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -156,6 +172,7 @@ export const products: Product[] = [
   description: 'Whey protein com excelente sabor e qualidade.',
   flavors: ['Chocolate', 'Leite Ninho'],
   unavailableFlavors: ['Leite Ninho'],
+  nutritionInfoImage: wheyshark100_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -166,6 +183,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Whey protein isolado com rápida absorção.',
   flavors: ['Chocolate', 'Baunilha'],
+  nutritionInfoImage: wheyiso_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -176,6 +194,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Proteína de carne para ganho de massa muscular.',
   flavors: ['Chocolate', 'Baunilha', 'Blueberry'],
+  nutritionInfoImage: carnibol_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 {
@@ -186,6 +205,7 @@ export const products: Product[] = [
   category: 'Whey Protein',
   description: 'Proteína isolada de carne com alto teor proteico.',
   flavors: ['Chocolate'],
+  nutritionInfoImage: beef_nutricional,
   weight: 1.10, width: 14, height: 23, length: 14
 },
 
@@ -474,14 +494,15 @@ export const products: Product[] = [
 
 // Pasta de amendoim - Jar (assumi preço R$ 24.90 e tamanho estilo pote 300g)
 {
-  id: 'pasta-amendoim-laganexa-300g',
-  name: 'Pasta de Amendoim - Lá Ganexa - 300g',
+  id: 'pasta-amendoim-laganexa-450g',
+  name: 'Pasta de Amendoim - Lá Ganexa - 450g',
   price: 24.90,
   image: leitinho,
   category: 'Barras e Pastas',
   description: 'Pasta de amendoim artesanal - cremosa e saborosa.',
   flavors: ['Mousse de Brigadeiro', 'Leitinho', 'Leitinho Black'],
-  weight: 0.35, width: 10, height: 12, length: 10
+  weight: 0.50, width: 10, height: 12, length: 10,
+  badge: 'PROMO 🔥'
 },
 
 // Sachê pré-treino Warzone 10g (preço informado R$ 10,50)

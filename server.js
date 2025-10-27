@@ -13,14 +13,16 @@ app.use(express.json());
 
 // ⚙️ Configurações vindas do .env
 const TOKEN = process.env.MELHOR_ENVIO_TOKEN;
-const CEP_ORIGEM = process.env.CEP_ORIGEM || '12073510';
+const CEP_ORIGEM = process.env.CEP_ORIGEM || '89140000';
 const URL = 'https://www.melhorenvio.com.br/api/v2/me/shipment/calculate';
 
 // 🧮 Função auxiliar para consolidar produtos em um único pacote
 function calcularPacote(produtos) {
   // Soma o peso total (em kg)
   const pesoTotal = produtos.reduce(
-    (total, p) => total + (p.peso || 0.5) * (p.quantidade || 1),
+    (total, p) =>
+      total +
+      (p.peso || p.weight || 0.5) * (p.quantidade || p.quantity || 1),
     0
   );
 
@@ -28,10 +30,10 @@ function calcularPacote(produtos) {
   const volumeTotal = produtos.reduce(
     (total, p) =>
       total +
-      (p.largura || 15) *
-        (p.altura || 10) *
-        (p.comprimento || 20) *
-        (p.quantidade || 1),
+      ((p.largura || p.width || 15) *
+        (p.altura || p.height || 10) *
+        (p.comprimento || p.length || 20) *
+        (p.quantidade || p.quantity || 1)),
     0
   );
 
@@ -51,6 +53,7 @@ function calcularPacote(produtos) {
   };
 }
 
+
 // 🚚 Endpoint de cálculo de frete
 app.post('/calcular-frete', async (req, res) => {
   try {
@@ -64,28 +67,24 @@ app.post('/calcular-frete', async (req, res) => {
     const pacote = calcularPacote(produtos);
 
     const body = {
-      from: { postal_code: CEP_ORIGEM },
-      to: { postal_code: cepDestino },
-      products: [
-        {
-          id: 'pacote-carrinho',
-          width: pacote.largura,
-          height: pacote.altura,
-          length: pacote.comprimento,
-          weight: pacote.peso,
-          insurance_value: produtos.reduce(
-            (total, p) => total + (p.valor || 0) * (p.quantidade || 1),
-            0
-          ),
-          quantity: 1,
-        },
-      ],
-      options: {
-        receipt: false,
-        own_hand: false,
-      },
-      services: '1,2,3,4,9', // PAC, SEDEX, Jadlog, Azul Cargo, etc.
-    };
+  from: { postal_code: CEP_ORIGEM },
+  to: { postal_code: cepDestino },
+  products: produtos.map((p) => ({
+    id: p.id || 'produto',
+    width: p.largura || p.width || 15,
+    height: p.altura || p.height || 10,
+    length: p.comprimento || p.length || 20,
+    weight: p.peso || p.weight || 0.5,
+    quantity: p.quantidade || p.quantity || 1,
+    insurance_value: p.valor || p.price || 0,
+    format: 1,
+  })),
+  options: {
+    receipt: false,
+    own_hand: false,
+  },
+  services: '1,2,3,4,9', // PAC, SEDEX, Jadlog, Azul Cargo, etc.
+}; 
 
     const response = await fetch(URL, {
       method: 'POST',
@@ -103,6 +102,8 @@ app.post('/calcular-frete', async (req, res) => {
       console.error('❌ Erro na resposta da API:', data);
       return res.status(400).json({ error: 'Resposta inválida do Melhor Envio', data });
     }
+
+    console.log('📦 Dados retornados da API Melhor Envio:', JSON.stringify(data, null, 2));
 
     // Mapeia os resultados para o frontend
     const fretes = data.map((item) => ({
