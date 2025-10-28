@@ -16,6 +16,10 @@ export const Cart = () => {
   const [complemento, setComplemento] = useState('');
   const [editandoEndereco, setEditandoEndereco] = useState(false);
 
+  // --- Novos estados para cupom ---
+  const [cupom, setCupom] = useState('');
+  const [desconto, setDesconto] = useState(0); // 0.1 = 10%
+
   const API_URL =
     import.meta.env.MODE === 'production'
       ? 'https://black-shark-frete.onrender.com'
@@ -82,7 +86,18 @@ export const Cart = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           cepDestino: apenasNumeros,
-          produtos: cart.map((item) => ({
+          produtos: cart.map((item: {
+            id: string;
+            name: string;
+            quantity: number;
+            weight?: number;
+            width?: number;
+            height?: number;
+            length?: number;
+            price: number;
+            flavor?: string;
+            image?: string;
+          }) => ({
             id: item.id,
             nome: item.name,
             quantidade: item.quantity,
@@ -141,6 +156,21 @@ export const Cart = () => {
     toast.success('Endereço atualizado com sucesso!');
   };
 
+  // --- Função para aplicar cupom ---
+  const handleAplicarCupom = () => {
+    const codigo = cupom.trim().toUpperCase();
+    if (codigo === 'SHARK10') {
+      setDesconto(0.1);
+      toast.success('Cupom SHARK10 aplicado! Você ganhou 10% de desconto.');
+    } else if (codigo === '') {
+      setDesconto(0);
+      toast.info('Nenhum cupom aplicado.');
+    } else {
+      setDesconto(0);
+      toast.error('Cupom inválido.');
+    }
+  };
+
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) return toast.error('Seu carrinho está vazio!');
     if (!customerName.trim()) return toast.error('Por favor, digite seu nome completo');
@@ -155,16 +185,41 @@ export const Cart = () => {
     }
 
     let msg = '🦈 *Novo Pedido — BLACK SHARK SUPLEMENTOS*\n\n📦 *Itens:*\n';
-    cart.forEach((i) => {
+    cart.forEach((i: {
+      id: string;
+      name: string;
+      quantity: number;
+      weight?: number;
+      width?: number;
+      height?: number;
+      length?: number;
+      price: number;
+      flavor?: string;
+      image?: string;
+    }) => {
       const flavorText = i.flavor ? ` — *${i.flavor}*` : '';
       msg += `• ${i.name}${flavorText} — ${i.quantity}x R$ ${i.price.toFixed(2)}\n`;
     });
 
-    msg += `\n💰 *Subtotal:* R$ ${totalPrice.toFixed(2)}\n`;
+    // Totais / Descontos
+    const valorFrete = frete ? parseFloat(frete.valor.replace(',', '.')) : 0;
+    const subtotal = totalPrice;
+    const valorDesconto = subtotal * desconto;
+    const subtotalComDesconto = subtotal - valorDesconto;
+    const totalFinal =
+      deliveryType === 'entrega' && frete
+        ? (subtotalComDesconto + valorFrete).toFixed(2)
+        : subtotalComDesconto.toFixed(2);
+
+    msg += `\n💰 *Subtotal:* R$ ${subtotal.toFixed(2)}\n`;
+    if (desconto > 0) {
+      msg += `🏷️ *Desconto (${(desconto * 100).toFixed(0)}% - ${cupom.toUpperCase()}):* -R$ ${valorDesconto.toFixed(2)}\n`;
+    }
     if (deliveryType === 'entrega' && frete) {
       msg += `🚚 *Frete (${frete.servico}):* R$ ${frete.valor}\n`;
-      const total = parseFloat(totalPrice.toFixed(2)) + parseFloat(frete.valor.replace(',', '.'));
-      msg += `💵 *Total com frete:* R$ ${total.toFixed(2)}\n`;
+      msg += `💵 *Total com frete:* R$ ${(parseFloat(totalFinal) /* already includes frete when calculated above */).toFixed(2)}\n`;
+    } else {
+      msg += `💵 *Total:* R$ ${totalFinal}\n`;
     }
 
     if (endereco) {
@@ -176,6 +231,11 @@ export const Cart = () => {
     msg += `💳 *Pagamento:* ${paymentMethod === 'pix' ? 'PIX' : paymentMethod === 'debito' ? 'Débito' : 'Crédito'}\n`;
     msg += `👤 *Cliente:* ${customerName}\n`;
     if (cep) msg += `📮 *CEP:* ${cep}\n`;
+
+    if (desconto > 0) {
+      msg += `\n🏷️ Cupom utilizado: ${cupom.toUpperCase()}\n`;
+    }
+
     msg += '\nEnviado via site oficial Black Shark Suplementos.';
 
     window.open(`https://wa.me/5547991906158?text=${encodeURIComponent(msg)}`, '_blank');
@@ -195,10 +255,13 @@ export const Cart = () => {
     );
 
   const valorFrete = frete ? parseFloat(frete.valor.replace(',', '.')) : 0;
+  const subtotal = totalPrice;
+  const valorDesconto = subtotal * desconto;
+  const subtotalComDesconto = subtotal - valorDesconto;
   const totalFinal =
     deliveryType === 'entrega' && frete
-      ? (totalPrice + valorFrete).toFixed(2)
-      : totalPrice.toFixed(2);
+      ? (subtotalComDesconto + valorFrete).toFixed(2)
+      : subtotalComDesconto.toFixed(2);
 
   return (
     <section id="carrinho" className="py-20 bg-shark-gray-dark">
@@ -208,7 +271,18 @@ export const Cart = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Itens */}
           <div className="lg:col-span-2 space-y-4">
-            {cart.map((item) => (
+            {cart.map((item: {
+              id: string;
+              name: string;
+              quantity: number;
+              weight?: number;
+              width?: number;
+              height?: number;
+              length?: number;
+              price: number;
+              flavor?: string;
+              image?: string;
+            }) => (
   <div
     key={item.id + (item.flavor || '')}
     className="product-card p-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full overflow-hidden"
@@ -415,9 +489,6 @@ export const Cart = () => {
   </>
 )}
 
-
-
-
               {/* Pagamento */}
               <div className="mt-6">
                 <label className="block text-sm text-shark-gray-light mb-2">Forma de pagamento</label>
@@ -435,8 +506,13 @@ export const Cart = () => {
               {/* Totais */}
               <div className="mt-6 text-shark-white">
                 <p className="flex justify-between mb-1">
-                  <span>Subtotal:</span> <span>R$ {totalPrice.toFixed(2)}</span>
+                  <span>Subtotal:</span> <span>R$ {subtotal.toFixed(2)}</span>
                 </p>
+                {desconto > 0 && (
+                  <p className="flex justify-between mb-1 text-shark-gray-light">
+                    <span>Desconto ({(desconto * 100).toFixed(0)}%):</span> <span>-R$ {valorDesconto.toFixed(2)}</span>
+                  </p>
+                )}
                 {frete && (
                   <p className="flex justify-between mb-1 text-shark-gray-light">
                     <span>Frete:</span> <span>R$ {frete.valor}</span>
@@ -445,6 +521,23 @@ export const Cart = () => {
                 <p className="flex justify-between text-lg font-bold mt-2">
                   <span>Total:</span> <span>R$ {totalFinal}</span>
                 </p>
+              </div>
+
+              <div className="mt-4">
+                <input
+                  type="text"
+                  placeholder="Cupom de desconto"
+                  value={cupom}
+                  onChange={(e) => setCupom(e.target.value)}
+                  className="w-full px-4 py-2 mb-2 bg-shark-gray-dark border border-shark-gray rounded-lg text-shark-white placeholder:text-shark-gray-light focus:outline-none focus:border-shark-white transition-colors"
+                />
+                <button
+                  onClick={handleAplicarCupom}
+                  className="w-full h-12 mt-2 px-6 rounded-lg flex items-center justify-center font-semibold transition-colors bg-[#e50914] hover:bg-[#b40810] text-white mx-auto"
+                  style={{ justifyContent: 'center' }}
+                >
+                  Aplicar Cupom
+                </button>
               </div>
 
               <button
