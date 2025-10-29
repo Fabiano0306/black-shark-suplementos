@@ -85,7 +85,7 @@ import warzonenutricional from '@/assets/nutricional/warzone_nutricional.png';
 import crackrumblenutricional from '@/assets/nutricional/crackrumble_nutricional.png';
 import ectoplasmanutricional from '@/assets/nutricional/ectoplasma_nutricional.png';
 import hipersharknutricional from '@/assets/nutricional/hipershark_nutricional.png';
-import vitaminad2000nutricional from '@/assets/nutricional/vitaminaD2000_nutricional.png';
+import vitaminadnutricional from '@/assets/nutricional/vitaminaD2000_nutricional.png';
 import vitaminazincoquelato from '@/assets/nutricional/vitaminazincoquelato_nutricional.png';
 import hemovitalnutricional from '@/assets/nutricional/hemovital_nutricional.png';
 import multivitaminicodux from '@/assets/nutricional/multivitaminicodux_nutricional.png';
@@ -471,7 +471,7 @@ export const products: Product[] = [
   image: vitaminaD2000,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina D3 para suporte ósseo e imunidade.',
-  nutritionInfoImage: vitaminad2000nutricional,
+  nutritionInfoImage: vitaminadnutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
