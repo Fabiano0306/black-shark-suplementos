@@ -82,19 +82,20 @@ export const Header = () => {
     </nav>
     <div className="mt-8 border-t border-shark-gray-dark pt-4 flex justify-center">
   <a
-    href="https://instagram.com/desenvolvedor_fabiano"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
-      bg-gradient-to-r from-[#00ffff] to-[#0077ff]
-      text-white font-bold px-4 py-2 rounded-lg
-      shadow-[0_0_15px_rgba(0,200,255,0.5)]
-      transition-all duration-300
-      hover:shadow-[0_0_25px_rgba(0,200,255,0.8)]
-    "
-  >
-    DEV Fabiano
-  </a>
+  href="https://instagram.com/desenvolvedor_fabiano"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    bg-gradient-to-r from-[#00ffff] to-[#0077ff]
+    text-neutral-900 font-bold px-4 py-2 rounded-lg
+    shadow-[0_0_15px_rgba(0,200,255,0.5)]
+    transition-all duration-300
+    hover:shadow-[0_0_25px_rgba(0,200,255,0.8)]
+  "
+>
+  DEV Fabiano Costa
+</a>
+
 </div>
 
   </SheetContent>

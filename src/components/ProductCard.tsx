@@ -34,7 +34,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       flavor: selectedFlavor || null,
     });
 
-    toast.success('Produto adicionado ao carrinho!');
+   
   };
 
   const isFlavorUnavailable = (flavor: string) =>

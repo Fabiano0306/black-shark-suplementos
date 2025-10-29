@@ -49,6 +49,12 @@ import barranutrata from '@/assets/barranutrata.png';
 import warzonesache from '@/assets/warzonesache1.png';
 import evoraxt from '@/assets/evoraxt.png';
 import dilapump from '@/assets/dilapump.png';
+import prenight from '@/assets/prenight.png';
+import psichokiller from '@/assets/psichokiller.png';
+import warzonenight from '@/assets/warzonenight.png';
+import macaperuana from '@/assets/macaperuana.png';
+import betaalanina from '@/assets/betaalanina.png';
+import creatinamax from '@/assets/creatinamax.png';
 import chaAbdomenNutricional from '@/assets/nutricional/cha_abdomen_nutricional.png';
 import nightAbdomenNutricional from '@/assets/nutricional/night_abdomen_nutricional.png';
 import dimethylex_nutricional from '@/assets/nutricional/dimethylex_nutricional.png';
@@ -62,7 +68,30 @@ import wheyshark100_nutricional from '@/assets/nutricional/wheyshark100_nutricio
 import wheyiso_nutricional from '@/assets/nutricional/wheyiso_nutricional.png';
 import carnibol_nutricional from '@/assets/nutricional/carnibol_nutricional.png';
 import beef_nutricional from '@/assets/nutricional/beef_nutricional.png';
-
+import warzonenightnutricional from '@/assets/nutricional/warzonenight_nutricional.png';
+import creatinaundernutricional from '@/assets/nutricional/creatinaunder_nutricional.png';
+import glutaminanutricional from '@/assets/nutricional/glutamina_nutricional.png';
+import macaperuananutricional from '@/assets/nutricional/macaperuana_nutricional.png';
+import betaalaninanutricional from '@/assets/nutricional/betaalanina_nutricional.png';
+import creatinamaxnutricional from '@/assets/nutricional/creatinamax_nutricional.png';
+import evorapwnutricional from '@/assets/nutricional/evorapw_nutricional.png';
+import dilapumpnutricional from '@/assets/nutricional/dilapump_nutricional.png';
+import prenightnutricional from '@/assets/nutricional/prenight_nutricional.png';
+import psichonutricional from '@/assets/nutricional/psicho_nutricional.png';
+import panicnutricional from '@/assets/nutricional/panic_nutricional.png';
+import evoraxtnutricional from '@/assets/nutricional/evoraxt_nutricional.png';
+import insanevolknutricional from '@/assets/nutricional/insanevolk_nutricional.png';
+import warzonenutricional from '@/assets/nutricional/warzone_nutricional.png';
+import crackrumblenutricional from '@/assets/nutricional/crackrumble_nutricional.png';
+import ectoplasmanutricional from '@/assets/nutricional/ectoplasma_nutricional.png';
+import hipersharknutricional from '@/assets/nutricional/hipershark_nutricional.png';
+import vitaminad2000nutricional from '@/assets/nutricional/vitaminaD2000_nutricional.png';
+import vitaminazincoquelato from '@/assets/nutricional/vitaminazincoquelato_nutricional.png';
+import hemovitalnutricional from '@/assets/nutricional/hemovital_nutricional.png';
+import multivitaminicodux from '@/assets/nutricional/multivitaminicodux_nutricional.png';
+import vitac3vsnutricional from '@/assets/nutricional/vitac3vs_nutricional.png';
+import omega3nutricional from '@/assets/nutricional/omega3_nutricional.png';
+import biotinanutricional from '@/assets/nutricional/biotina_nutricional.png';
 
 export const products: Product[] = [
   // 🧘 Emagrecedores e Termogênicos
@@ -222,6 +251,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino com energia e foco intensos.',
   flavors: ['Uva', 'Maçã Verde'],
+  nutritionInfoImage: evorapwnutricional,
   weight: 0.35, width: 10, height: 12, length: 10
 },
 {
@@ -232,6 +262,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino com energia e foco intensos.',
   flavors: ['Limonada'],
+  nutritionInfoImage: dilapumpnutricional,
   weight: 0.50, width: 10, height: 12, length: 10
 },
 {
@@ -242,8 +273,35 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino para explosão e energia.',
   flavors: ['Maçã Verde', 'Frutas Vermelhas'],
+  nutritionInfoImage: insanevolknutricional,
   weight: 0.35, width: 10, height: 12, length: 10,
   badge: 'Produto Novo 🔥'
+},
+
+//200g
+{
+  id: 'pre-night-body-action-200g',
+  name: 'Pré Night - Body Action - 200g',
+  price: 115.00,
+  image: prenight,
+  category: 'Pré-Treino',
+  description: 'Energia e disposição para treinar à noite, sem comprometer o sono.',
+  flavors: ['Guaraná com Açaí'],
+  nutritionInfoImage: prenightnutricional,
+  weight: 0.40, width: 10, height: 15, length: 10
+},
+
+//294
+{
+  id: 'psicho-killer-demons-lab-294g',
+  name: 'Psicho Killer - Demons Lab - 294g',
+  price: 219.90,
+  image: psichokiller,
+  category: 'Pré-Treino',
+  description: 'pré-treino desenvolvido para proporcionar uma experiência intensa e focada durante seus treinos.',
+  flavors: ['Frutas Vermelhas', 'Frutas Amarelas'],
+  nutritionInfoImage: psichonutricional,
+  weight: 0.45, width: 10, height: 15, length: 10
 },
 
 // 300g
@@ -253,8 +311,9 @@ export const products: Product[] = [
   price: 149.90,
   image: panic,
   category: 'Pré-Treino',
-  description: 'Pré-treino com creatina adicionada para máxima performance.',
+  description: 'projetado para aumentar a energia, foco e resistência durante treinos intensos.',
   flavors: ['Manga e Laranja', 'Morango', 'Abacaxi'],
+  nutritionInfoImage: panicnutricional,
   weight: 0.40, width: 10, height: 15, length: 10
 },
 {
@@ -265,16 +324,18 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Versão com menos cafeína do Évora para treinos menos intensos.',
   flavors: ['Uva'],
+  nutritionInfoImage: evorapwnutricional,
   weight: 0.40, width: 10, height: 15, length: 10
 },
 {
   id: 'evoraXT-darkness-300g',
   name: 'Évora XT - Darkness - 300g',
-  price: 135.00,
+  price: 147.00,
   image: evoraxt,
   category: 'Pré-Treino',
   description: 'Versão concentrada do Évora para treinos intensos, mais cafeína.',
   flavors: ['Neon berry', 'Bloody berry', 'Orange storm'],
+  nutritionInfoImage: evoraxtnutricional,
   weight: 0.40, width: 10, height: 15, length: 10,
   badge: 'Edição Limitada 🔥'
 },
@@ -286,6 +347,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino de alta performance com energia extrema.',
   flavors: ['Passion & Fury', 'Purple Heart Punch'],
+  nutritionInfoImage: warzonenutricional,
   weight: 0.40, width: 10, height: 15, length: 10
 },
 {
@@ -295,7 +357,21 @@ export const products: Product[] = [
   image: crackrumble,
   category: 'Pré-Treino',
   description: 'Pré-treino explosivo com alta concentração de estimulantes.',
+  nutritionInfoImage: crackrumblenutricional,
   weight: 0.40, width: 10, height: 15, length: 10
+},
+
+//360g
+{
+  id: 'warzone-night-under-labz-360g',
+  name: 'Warzone Night (Sem Cafeína) - Under Labz - 360g',
+  price: 149.90,
+  image: warzonenight,
+  category: 'Pré-Treino',
+  description: 'Pré-treino para quem busca máxima performance sem interferir no sono.',
+  flavors: ['Purple heart punch'],
+  nutritionInfoImage: warzonenightnutricional,
+  weight: 0.50, width: 10, height: 15, length: 10
 },
 
 // 480g
@@ -306,18 +382,20 @@ export const products: Product[] = [
   image: ectoplasma,
   category: 'Pré-Treino',
   description: 'Pré-treino avançado com máxima energia e foco.',
+  nutritionInfoImage: ectoplasmanutricional,
   weight: 0.60, width: 12, height: 18, length: 12
 },
 
 // Hipercalóricos
 {
   id: 'sharkmass-sharkpro-3kg',
-  name: 'Shark Mass - Shark Pro - 3kg',
+  name: ' Anabolik Shark Mass - Shark Pro - 3kg',
   price: 137.00,
   image: hipershark,
   category: 'Hipercalóricos',
   description: 'Hipercalórico para ganho de massa muscular.',
   flavors: ['Morango', 'Chocolate'],
+  nutritionInfoImage: hipersharknutricional,
   weight: 3.20, width: 22, height: 32, length: 22
 },
 
@@ -329,6 +407,7 @@ export const products: Product[] = [
   image: glutamina,
   category: 'Glutamina',
   description: 'Suplemento para recuperação muscular e imunidade.',
+  nutritionInfoImage: glutaminanutricional,
   weight: 0.40, width: 10, height: 15, length: 10
 },
 {
@@ -338,7 +417,18 @@ export const products: Product[] = [
   image: creatinaunder,
   category: 'Creatina',
   description: 'Creatina monohidratada para aumento de força e desempenho.',
-  weight: 0.40, width: 10, height: 15, length: 10
+  nutritionInfoImage: creatinaundernutricional,
+  weight: 0.45, width: 10, height: 15, length: 10
+},
+{
+  id: 'creatina-max-300g',
+  name: 'Creatina - MAX - 300g',
+  price: 105.00,
+  image: creatinamax,
+  category: 'Creatina',
+  description: 'Creatina monohidratada para aumento de força e desempenho.',
+  nutritionInfoImage: creatinamaxnutricional,
+  weight: 0.45, width: 10, height: 15, length: 10
 },
 
 // Eletrólitos (760g–1kg)
@@ -381,6 +471,7 @@ export const products: Product[] = [
   image: vitaminaD2000,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina D3 para suporte ósseo e imunidade.',
+  nutritionInfoImage: vitaminad2000nutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -390,15 +481,27 @@ export const products: Product[] = [
   image: vitaminaC500,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina C com Zinco para imunidade e antioxidante.',
+  nutritionInfoImage: vitaminazincoquelato,
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+{
+  id: 'maca-peruana-lauton-100g',
+  name: 'Maca Peruana - Lauton - 100g',
+  price: 69.90,
+  image: macaperuana,
+  category: 'Vitaminas e Minerais',
+  description: 'nutre o corpo e contribui para o aumento da energia e do vigor físico, combatendo sintomas de cansaço, fadiga e falta de concentração.',
+  nutritionInfoImage: macaperuananutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
   id: 'hemovital-lauton-60comp',
-  name: 'Hemovital (Multi Vitamínico) - Lauton - 60comp',
+  name: 'Hemovital - Lauton - 60comp',
   price: 79.90,
   image: hemovital,
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico completo para saúde geral.',
+  nutritionInfoImage: hemovitalnutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -408,6 +511,7 @@ export const products: Product[] = [
   image: multidux,
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico em cápsulas com alta biodisponibilidade.',
+  nutritionInfoImage: multivitaminicodux,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -417,6 +521,7 @@ export const products: Product[] = [
   image: multidux90,
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico completo com 90 cápsulas.',
+  nutritionInfoImage: multivitaminicodux,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -426,6 +531,7 @@ export const products: Product[] = [
   image: vitac,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina C com alta concentração para imunidade.',
+  nutritionInfoImage: vitac3vsnutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -435,6 +541,7 @@ export const products: Product[] = [
   image: omega3,
   category: 'Vitaminas e Minerais',
   description: 'Ômega 3 para saúde cardiovascular e cognitiva.',
+  nutritionInfoImage: omega3nutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -444,6 +551,7 @@ export const products: Product[] = [
   image: biotina,
   category: 'Vitaminas e Minerais',
   description: 'Suplemento de biotina para cabelo e unhas.',
+  nutritionInfoImage: biotinanutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 
@@ -537,6 +645,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Sachê pré-treino para testar doses — ideal para experimentar sabores.',
   flavors: ['Blood Natle', 'Green Bomb'],
+  nutritionInfoImage: warzonenutricional,
   weight: 0.03, width: 8, height: 2, length: 12
 },
 
@@ -549,6 +658,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Sachê do pré-treino Panic — dose única para testar o produto.',
   flavors: ['Limonada', 'Maçã Verde'],
+  nutritionInfoImage: panicnutricional,
   weight: 0.03, width: 8, height: 2, length: 12
 },
 
@@ -587,6 +697,18 @@ export const products: Product[] = [
   flavors: ['Dark Caramel Protein'],
   weight: 0.07, width: 6, height: 2, length: 18
 },
+
+//Aminoácidos
+{
+  id: 'beta-alanina-integral-medica-123g',
+  name: 'Beta Alanina - Integral Médica - 123g',
+  price: 66.00,
+  image: betaalanina,
+  category: 'Aminoácidos',
+  description: 'retarda a fadiga muscular durante os exercícios, melhorando o desempenho físico de atletas e praticantes de atividades físicas de alta intensidade..',
+  nutritionInfoImage: betaalaninanutricional,
+  weight: 0.30, width: 10, height: 15, length: 10
+},
 ];
 
 
@@ -602,4 +724,5 @@ export const categories = [
   'Barras e Pastas',
   'Saúde e Sono',
   'Pré e Intra-Treino / Eletrólitos',
+  'Aminoácidos',
 ];

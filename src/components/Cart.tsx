@@ -159,17 +159,29 @@ export const Cart = () => {
   // --- Função para aplicar cupom ---
   const handleAplicarCupom = () => {
     const codigo = cupom.trim().toUpperCase();
-    if (codigo === 'SHARK10') {
-      setDesconto(0.1);
-      toast.success('Cupom SHARK10 aplicado! Você ganhou 10% de desconto.');
-    } else if (codigo === '') {
-      setDesconto(0);
-      toast.info('Nenhum cupom aplicado.');
-    } else {
-      setDesconto(0);
-      toast.error('Cupom inválido.');
+    switch (codigo) {
+      case 'PADILHA_TREINADOR':
+      case 'KRUMM12':
+      case 'LUCAS10':
+      case 'NUTRIMAJU':
+      case 'GUSTAVO10':
+      case 'RUTH10':
+      case 'BRUNOHC':
+        setDesconto(0.1);
+        toast.success(`Cupom ${codigo} aplicado! Você ganhou 10% de desconto.`);
+        break;
+      case '':
+        setDesconto(0);
+        toast.info('Nenhum cupom aplicado.');
+        break;
+      default:
+        setDesconto(0);
+        toast.error('Cupom inválido.');
+        break;
     }
   };
+
+  
 
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) return toast.error('Seu carrinho está vazio!');

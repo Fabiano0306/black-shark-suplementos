@@ -35,8 +35,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         (item) => item.id === product.id && item.flavor === product.flavor
       );
 
+      toast.dismiss(); // evita duplicação de popups
+
       if (existingItem) {
-        toast.success('Quantidade atualizada no carrinho!');
+        toast.success('Quantidade atualizada no carrinho!', {
+          description: `${product.name} (${product.flavor || 'Padrão'})`,
+        });
         return prevCart.map((item) =>
           item.id === product.id && item.flavor === product.flavor
             ? { ...item, quantity: item.quantity + 1 }
@@ -53,23 +57,25 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         length: product.length ?? 20,
       };
 
-      toast.success('Produto adicionado ao carrinho!');
+      toast.success('Produto adicionado ao carrinho!', {
+        description: `${product.name} (${product.flavor || 'Padrão'})`,
+      });
+
       return [...prevCart, productWithDefaults];
     });
 
     resetShipping();
   };
 
-  // ✅ Corrigido: agora considera o sabor
   const removeFromCart = (productId: string, flavor?: string) => {
     setCart((prevCart) =>
       prevCart.filter((item) => !(item.id === productId && item.flavor === flavor))
     );
-    toast.success('Produto removido do carrinho');
+    toast.dismiss();
+    toast.success('Produto removido do carrinho!');
     resetShipping();
   };
 
-  // ✅ Corrigido: também considera o sabor
   const updateQuantity = (productId: string, flavor: string | undefined, delta: number) => {
     setCart((prevCart) => {
       const updatedCart = prevCart
@@ -77,9 +83,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
           if (item.id === productId && item.flavor === flavor) {
             const newQuantity = item.quantity + delta;
             if (newQuantity <= 0) {
-              toast.success('Produto removido do carrinho');
+              toast.dismiss();
+              toast.success('Produto removido do carrinho!');
               return null;
             }
+            toast.dismiss();
+            toast.success('Quantidade atualizada no carrinho!');
             return { ...item, quantity: newQuantity };
           }
           return item;
@@ -93,6 +102,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const clearCart = () => {
     setCart([]);
+    toast.dismiss();
     toast.success('Carrinho limpo!');
     resetShipping();
   };

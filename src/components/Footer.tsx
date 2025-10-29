@@ -49,26 +49,66 @@ export const Footer = () => {
           {/* Social Media */}
           <div>
             <h4 className="text-lg font-bold text-shark-white mb-4">Redes Sociais</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://instagram.com/blackshark_suplementos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-shark-gray rounded-full flex items-center justify-center hover:bg-shark-white hover:scale-110 transition-all group"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-6 h-6 text-shark-white group-hover:text-shark-black transition-colors" />
-              </a>
-              <a
-                href="https://wa.me/5547991906158"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-shark-gray rounded-full flex items-center justify-center hover:bg-shark-white hover:scale-110 transition-all group"
-                aria-label="WhatsApp"
-              >
-                <Phone className="w-6 h-6 text-shark-white group-hover:text-shark-black transition-colors" />
-              </a>
-            </div>
+<div className="flex gap-4">
+  {/* Instagram */}
+  <a
+    href="https://instagram.com/blackshark_suplementos"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-12 h-12 bg-shark-gray rounded-full flex items-center justify-center hover:bg-shark-white hover:scale-110 transition-all group relative overflow-hidden"
+    aria-label="Instagram"
+  >
+    <span
+      className="absolute inset-0 rounded-full z-0"
+      style={{
+        background:
+          'conic-gradient(from 0deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f77737, #fcb045, #405de6)',
+        animation: 'spin 2s linear infinite',
+      }}
+    />
+    <Instagram className="w-6 h-6 text-shark-white group-hover:text-shark-black transition-colors relative z-10" />
+  </a>
+
+  {/* WhatsApp com PNG */}
+  <a
+    href="https://wa.me/5547991906158"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-12 h-12 bg-shark-gray rounded-full flex items-center justify-center hover:bg-shark-white hover:scale-110 transition-all group relative overflow-hidden"
+    aria-label="WhatsApp"
+  >
+    {/* Efeito animado */}
+    <span
+      className="absolute inset-0 rounded-full z-0"
+      style={{
+        background:
+          'conic-gradient(from 0deg, #25D366, #128C7E, #075E54, #25D366, #128C7E)',
+        animation: 'spin 3s linear infinite',
+      }}
+    />
+    {/* Ícone PNG centralizado */}
+    <img
+      src="/icons/whatsapp.png" // 🟢 coloque o caminho da sua imagem aqui
+      alt="WhatsApp"
+      className="w-6 h-6 relative z-10 transition-all group-hover:scale-110 group-hover:brightness-110"
+    />
+
+    <style>
+      {`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .group:hover span {
+          filter: brightness(1.2) blur(1px);
+        }
+      `}
+    </style>
+  </a>
+</div>
+
+
+            
           </div>
         </div>
 
@@ -79,20 +119,21 @@ export const Footer = () => {
   </p>
   <p className="text-xs mt-2">
     <a
-      href="https://instagram.com/desenvolvedor_fabiano"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
-        bg-gradient-to-r from-[#00ffff] to-[#0077ff]
-        text-white font-bold px-2 py-1 rounded-lg
-        shadow-[0_0_12px_rgba(0,200,255,0.5)]
-        transition-all duration-300
-        hover:shadow-[0_0_25px_rgba(0,200,255,0.8)]
-      "
-    >
-      DEV Fabiano
-    </a>{' '} - Desenvolvedor Frontend
-  </p>
+    href="https://instagram.com/desenvolvedor_fabiano"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      bg-gradient-to-r from-[#00ffff] to-[#0077ff]
+      text-neutral-900 font-bold px-2 py-1 rounded-lg
+      shadow-[0_0_12px_rgba(0,200,255,0.5)]
+      transition-all duration-300
+      hover:shadow-[0_0_25px_rgba(0,200,255,0.8)]
+    "
+  >
+    Fabiano Costa
+  </a>{' '}
+  - Desenvolvedor Frontend
+</p>
 </div>
 
       </div>
