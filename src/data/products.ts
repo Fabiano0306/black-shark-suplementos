@@ -26,8 +26,8 @@ import creatinaunder from '@/assets/creatinaunder.png';
 import hydrolitelimao from '@/assets/hydrolitelimao.png';
 import hydrax from '@/assets/hydrax.png';
 import energy from '@/assets/energy.png';
-import vitaminaD2000 from '@/assets/vitaminaD2000.png';
-import vitaminaC500 from '@/assets/vitaminaC500.png';
+import vitaminad from '@/assets/vitaminad.png';
+import vitaminac from '@/assets/vitaminac.png';
 import hemovital from '@/assets/hemovital.png';
 import multidux from '@/assets/multidux.png';
 import multidux90 from '@/assets/multidux90.png';
@@ -85,7 +85,7 @@ import warzonenutricional from '@/assets/nutricional/warzone_nutricional.png';
 import crackrumblenutricional from '@/assets/nutricional/crackrumble_nutricional.png';
 import ectoplasmanutricional from '@/assets/nutricional/ectoplasma_nutricional.png';
 import hipersharknutricional from '@/assets/nutricional/hipershark_nutricional.png';
-import vitaminadnutricional from '@/assets/nutricional/vitaminaD2000_nutricional.png';
+import vitaminadnutricional from '@/assets/nutricional/vitaminad_nutricional.png';
 import vitaminazincoquelato from '@/assets/nutricional/vitaminazincoquelato_nutricional.png';
 import hemovitalnutricional from '@/assets/nutricional/hemovital_nutricional.png';
 import multivitaminicodux from '@/assets/nutricional/multivitaminicodux_nutricional.png';
@@ -133,7 +133,7 @@ export const products: Product[] = [
   price: 49.90,
   image: thermoflame,
   category: 'Termogênico / Emagrecedores',
-  description: 'Suplemento termogênico para queima de gordura e aumento de energia.',
+  description: 'Termogênico para queima de gordura e aumento de energia.',
   nutritionInfoImage: thermoflame_nutricional,
   weight: 0.25, width: 7, height: 12, length: 7,
 },
@@ -468,7 +468,7 @@ export const products: Product[] = [
   id: 'vitaminad3-lauton-60comp',
   name: 'Vitamina D3 2000ui - Lauton - 60comp',
   price: 61.50,
-  image: vitaminaD2000,
+  image: vitaminad,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina D3 para suporte ósseo e imunidade.',
   nutritionInfoImage: vitaminadnutricional,
@@ -478,7 +478,7 @@ export const products: Product[] = [
   id: 'vitaminaczinco-lauton-60comp',
   name: 'Vitamina C 500 + Zinco Quelato - Lauton - 60comp',
   price: 55.00,
-  image: vitaminaC500,
+  image: vitaminac,
   category: 'Vitaminas e Minerais',
   description: 'Vitamina C com Zinco para imunidade e antioxidante.',
   nutritionInfoImage: vitaminazincoquelato,
