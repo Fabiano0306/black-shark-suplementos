@@ -268,7 +268,7 @@ export const products: Product[] = [
   weight: 0.40, width: 10, height: 15, length: 10
 },
 {
-  id: 'evora-darkness-300g',
+  id: 'evoraXT-darkness-300g',
   name: 'Évora XT - Darkness - 300g',
   price: 135.00,
   image: evoraxt,
