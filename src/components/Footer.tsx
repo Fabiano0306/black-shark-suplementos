@@ -31,10 +31,10 @@ export const Footer = () => {
                 className="flex items-center gap-3 text-shark-gray-light hover:text-shark-white transition-colors group"
               >
                 <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span>(47) 99190-6158</span>
+                <span>Acessar WhatsApp</span>
               </a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=89140000"
+                href="https://maps.app.goo.gl/kcXrcepPN8FH4mdYA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-shark-gray-light hover:text-shark-white transition-colors group"
@@ -130,9 +130,9 @@ export const Footer = () => {
       hover:shadow-[0_0_25px_rgba(0,200,255,0.8)]
     "
   >
-    Fabiano Costa
+    Fabiano Costa - Desenvolvedor Frontend
   </a>{' '}
-  - Desenvolvedor Frontend
+  
 </p>
 </div>
 

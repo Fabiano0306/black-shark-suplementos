@@ -97,6 +97,17 @@ import testocyclenutricional from '@/assets/nutricional/testocycle_nutricional.p
 import collagenrenewnutricional from '@/assets/nutricional/collagenrenew_nutricional.png';
 import cartiflannutricional from '@/assets/nutricional/cartiflan_nutricional.png';
 import cartiflanultranutricional from '@/assets/nutricional/cartiflanultra_nutricional.png';
+import leitinhonutricional from '@/assets/nutricional/leitinho_nutricional.png';
+import boldnutricional from '@/assets/nutricional/bold_nutricional.png';
+import tastenutricional from '@/assets/nutricional/taste_nutricional.png';
+import nutratanutricional from '@/assets/nutricional/nutrata_nutricional.png';
+import magnesionutricional from '@/assets/nutricional/magnesio_nutricional.png';
+import melatoninanutricional from '@/assets/nutricional/melatonina_nutricional.png';
+import melatoninnutricional from '@/assets/nutricional/melatonin_nutricional.png';
+import triptofanonutricional from '@/assets/nutricional/triptofano_nutricional.png';
+import hydrolitenutricional from '@/assets/nutricional/hydrolite_nutricional.png';
+import hydraxnutricional from '@/assets/nutricional/hydrax_nutricional.png';
+import energynutricional from '@/assets/nutricional/energy_nutricional.png';
 
 export const products: Product[] = [
   // 🧘 Emagrecedores e Termogênicos
@@ -109,7 +120,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Chá termogênico com ingredientes naturais para auxiliar na queima de gordura.',
   nutritionInfoImage: chaAbdomenNutricional,
-  weight: 0.20, width: 8, height: 10, length: 8,
+  weight: 0.25, width: 8, height: 10, length: 8,
 },
 {
   id: 'night-abdomen-bodyaction-60caps',
@@ -119,7 +130,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Suplemento noturno que auxilia na queima de gordura durante o sono.',
   nutritionInfoImage: nightAbdomenNutricional,
-  weight: 0.25, width: 7, height: 12, length: 7,
+  weight: 0.30, width: 7, height: 12, length: 7,
 },
 {
   id: 'dimethylex-underlabz-60caps',
@@ -129,7 +140,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Termogênico potente para aumento de energia e definição corporal.',
   nutritionInfoImage: dimethylex_nutricional,
-  weight: 0.25, width: 7, height: 12, length: 7,
+  weight: 0.30, width: 7, height: 12, length: 7,
   badge: 'Novo 🔥'
 },
 {
@@ -140,7 +151,7 @@ export const products: Product[] = [
   category: 'Termogênico / Emagrecedores',
   description: 'Termogênico para queima de gordura e aumento de energia.',
   nutritionInfoImage: thermoflame_nutricional,
-  weight: 0.25, width: 7, height: 12, length: 7,
+  weight: 0.30, width: 7, height: 12, length: 7,
 },
 {
   id: 'clembuter-underlabz-250ml',
@@ -163,7 +174,7 @@ export const products: Product[] = [
   description: 'Suplemento líquido com carnitina para aumento de energia e metabolismo.',
   flavors: ['Yellow Fruits'],
   nutritionInfoImage: xcarnitine_nutricional,
-  weight: 0.60, width: 7, height: 18, length: 7,
+  weight: 0.65, width: 7, height: 18, length: 7,
 },
 
 // Whey Proteins (900g)
@@ -198,7 +209,7 @@ export const products: Product[] = [
   description: 'Blend proteico saboroso e cremoso.',
   flavors: ['Dulce de Leche', 'Vitamina de Frutas', 'Alpine Cookies Bear N\' Milk Bear', 'Swiss ChocoBear', 'SWISS CARAMEL MACCHIATO', 'Strawbear Swiss'],
   nutritionInfoImage: proteincrush_nutricional,
-  weight: 1.10, width: 20, height: 30, length: 12
+  weight: 1.40, width: 20, height: 30, length: 12
 },
 {
   id: '100whey-sharkpro-900g',
@@ -293,7 +304,7 @@ export const products: Product[] = [
   description: 'Energia e disposição para treinar à noite, sem comprometer o sono.',
   flavors: ['Guaraná com Açaí'],
   nutritionInfoImage: prenightnutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.45, width: 10, height: 15, length: 10
 },
 
 //294
@@ -319,7 +330,7 @@ export const products: Product[] = [
   description: 'projetado para aumentar a energia, foco e resistência durante treinos intensos.',
   flavors: ['Manga e Laranja', 'Morango', 'Abacaxi'],
   nutritionInfoImage: panicnutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 {
   id: 'evora-darkness-300g',
@@ -330,7 +341,7 @@ export const products: Product[] = [
   description: 'Versão com menos cafeína do Évora para treinos menos intensos.',
   flavors: ['Uva'],
   nutritionInfoImage: evorapwnutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 {
   id: 'evoraXT-darkness-300g',
@@ -341,7 +352,7 @@ export const products: Product[] = [
   description: 'Versão concentrada do Évora para treinos intensos, mais cafeína.',
   flavors: ['Neon berry', 'Bloody berry', 'Orange storm'],
   nutritionInfoImage: evoraxtnutricional,
-  weight: 0.40, width: 10, height: 15, length: 10,
+  weight: 0.50, width: 12, height: 16, length: 12,
   badge: 'Edição Limitada 🔥'
 },
 {
@@ -353,7 +364,7 @@ export const products: Product[] = [
   description: 'Pré-treino de alta performance com energia extrema.',
   flavors: ['Passion & Fury', 'Purple Heart Punch'],
   nutritionInfoImage: warzonenutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 {
   id: 'crackrumble-demonslab-300g',
@@ -363,7 +374,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino explosivo com alta concentração de estimulantes.',
   nutritionInfoImage: crackrumblenutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 
 //360g
@@ -376,7 +387,7 @@ export const products: Product[] = [
   description: 'Pré-treino para quem busca máxima performance sem interferir no sono.',
   flavors: ['Purple heart punch'],
   nutritionInfoImage: warzonenightnutricional,
-  weight: 0.50, width: 10, height: 15, length: 10
+  weight: 0.55, width: 12, height: 16, length: 12
 },
 
 // 480g
@@ -388,7 +399,7 @@ export const products: Product[] = [
   category: 'Pré-Treino',
   description: 'Pré-treino avançado com máxima energia e foco.',
   nutritionInfoImage: ectoplasmanutricional,
-  weight: 0.60, width: 12, height: 18, length: 12
+  weight: 0.68, width: 14, height: 19, length: 14
 },
 
 // Hipercalóricos
@@ -401,7 +412,7 @@ export const products: Product[] = [
   description: 'Hipercalórico para ganho de massa muscular.',
   flavors: ['Morango', 'Chocolate'],
   nutritionInfoImage: hipersharknutricional,
-  weight: 3.20, width: 22, height: 32, length: 22
+  weight: 4.50, width: 22, height: 32, length: 22
 },
 
 // Glutamina e Creatina (300g)
@@ -413,7 +424,7 @@ export const products: Product[] = [
   category: 'Glutamina',
   description: 'Suplemento para recuperação muscular e imunidade.',
   nutritionInfoImage: glutaminanutricional,
-  weight: 0.40, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 {
   id: 'creatina-underlabz-300g',
@@ -423,7 +434,7 @@ export const products: Product[] = [
   category: 'Creatina',
   description: 'Creatina monohidratada para aumento de força e desempenho.',
   nutritionInfoImage: creatinaundernutricional,
-  weight: 0.45, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 {
   id: 'creatina-max-300g',
@@ -433,7 +444,7 @@ export const products: Product[] = [
   category: 'Creatina',
   description: 'Creatina monohidratada para aumento de força e desempenho.',
   nutritionInfoImage: creatinamaxnutricional,
-  weight: 0.45, width: 10, height: 15, length: 10
+  weight: 0.50, width: 12, height: 16, length: 12
 },
 
 // Eletrólitos (760g–1kg)
@@ -445,7 +456,8 @@ export const products: Product[] = [
   category: 'Pré e Intra-Treino / Eletrólitos',
   description: 'Repositor eletrolítico para hidratação durante o treino.',
   flavors: ['Limão'],
-  weight: 1.00, width: 12, height: 20, length: 12
+  nutritionInfoImage: hydrolitenutricional,
+  weight: 1.40, width: 20, height: 30, length: 12
 },
 {
   id: 'hydra-integralmedica-760g',
@@ -455,7 +467,8 @@ export const products: Product[] = [
   category: 'Pré e Intra-Treino / Eletrólitos',
   description: 'Suplemento com eletrólitos para hidratação e recuperação.',
   flavors: ['Uva'],
-  weight: 0.90, width: 12, height: 20, length: 12
+  nutritionInfoImage: hydraxnutricional,
+  weight: 1.20, width: 18, height: 27, length: 12
 },
 {
   id: 'energykick-dux-1kg',
@@ -465,7 +478,8 @@ export const products: Product[] = [
   category: 'Pré e Intra-Treino / Eletrólitos',
   description: 'Pré e intra-treino com energia e eletrólitos.',
   flavors: ['Laranja'],
-  weight: 1.00, width: 12, height: 20, length: 12
+  nutritionInfoImage: energynutricional,
+  weight: 1.40, width: 20, height: 30, length: 12
 },
 
 // Vitaminas e Minerais (cápsulas)
@@ -477,7 +491,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Vitamina D3 para suporte ósseo e imunidade.',
   nutritionInfoImage: vitaminadnutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'vitaminaczinco-lauton-60comp',
@@ -487,7 +501,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Vitamina C com Zinco para imunidade e antioxidante.',
   nutritionInfoImage: vitaminazincoquelato,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'maca-peruana-lauton-100g',
@@ -497,7 +511,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'nutre o corpo e contribui para o aumento da energia e do vigor físico, combatendo sintomas de cansaço, fadiga e falta de concentração.',
   nutritionInfoImage: macaperuananutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'hemovital-lauton-60comp',
@@ -507,7 +521,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico completo para saúde geral.',
   nutritionInfoImage: hemovitalnutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'multivitaminico-dux-30caps',
@@ -517,7 +531,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico em cápsulas com alta biodisponibilidade.',
   nutritionInfoImage: multivitaminicodux,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'multivitaminico-dux-90caps',
@@ -527,7 +541,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Multivitamínico completo com 90 cápsulas.',
   nutritionInfoImage: multivitaminicodux,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.45, width: 8, height: 14, length: 8
 },
 {
   id: 'vitac-3vsnutrition-60caps',
@@ -537,7 +551,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Vitamina C com alta concentração para imunidade.',
   nutritionInfoImage: vitac3vsnutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'omeg3-macrophytus-120caps',
@@ -547,7 +561,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Ômega 3 para saúde cardiovascular e cognitiva.',
   nutritionInfoImage: omega3nutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.45, width: 8, height: 14, length: 8
 },
 {
   id: 'biotina-macrophytus-50caps',
@@ -557,7 +571,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'Suplemento de biotina para cabelo e unhas.',
   nutritionInfoImage: biotinanutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'testo-cycle-under-labz-120caps',
@@ -567,7 +581,7 @@ export const products: Product[] = [
   category: 'Vitaminas e Minerais',
   description: 'ciclo natural que ativa sua testosterona sem colaterais. Com L-aspartico, Boro e vitaminas chave, ele libera sua força, desejo e foco.',
   nutritionInfoImage: testocyclenutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.45, width: 8, height: 12, length: 8
 },
 
 
@@ -591,7 +605,7 @@ export const products: Product[] = [
   category: 'Colágenos',
   description: 'Colágeno tipo 2 para articulações e mobilidade.',
   nutritionInfoImage: cartiflannutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'cartiflanultra-macrophytus-30caps',
@@ -601,7 +615,7 @@ export const products: Product[] = [
   category: 'Colágenos',
   description: 'Suplemento de colágeno tipo 2 com ação anti-inflamatória.',
   nutritionInfoImage: cartiflanultranutricional,
-  weight: 0.25, width: 7, height: 12, length: 7
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 
 // Saúde e Sono
@@ -613,7 +627,8 @@ export const products: Product[] = [
   category: 'Saúde e Sono',
   description: 'Suplemento para relaxamento e melhora da qualidade do sono.',
   flavors: ['Maracujá', 'Frutas Vermelhas'],
-  weight: 0.30, width: 8, height: 12, length: 8
+  nutritionInfoImage: magnesionutricional,
+  weight: 0.35, width: 8, height: 12, length: 8
 },
 {
   id: 'melatonina-lauton-30ml',
@@ -622,7 +637,8 @@ export const products: Product[] = [
   image: melatoninalauton,
   category: 'Saúde e Sono',
   description: 'Suplemento líquido de melatonina para melhor sono.',
-  weight: 0.20, width: 5, height: 10, length: 5
+  nutritionInfoImage: melatoninanutricional,
+  weight: 0.30, width: 6, height: 10, length: 6
 },
 {
   id: 'melatonin-vitaminlife-60caps',
@@ -631,7 +647,8 @@ export const products: Product[] = [
   image: melatonin,
   category: 'Saúde e Sono',
   description: 'Suplemento de melatonina em cápsulas.',
-  weight: 0.25, width: 7, height: 12, length: 7
+  nutritionInfoImage: melatoninnutricional,
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 {
   id: 'tryptophan-nutrify-60caps',
@@ -640,7 +657,8 @@ export const products: Product[] = [
   image: tryptophan,
   category: 'Saúde e Sono',
   description: 'Aminoácido essencial que auxilia na produção de serotonina e melatonina.',
-  weight: 0.25, width: 7, height: 12, length: 7
+  nutritionInfoImage: triptofanonutricional,
+  weight: 0.35, width: 7, height: 12, length: 7
 },
 
 // Pasta de amendoim - Jar (assumi preço R$ 24.90 e tamanho estilo pote 300g)
@@ -652,7 +670,8 @@ export const products: Product[] = [
   category: 'Barras e Pastas',
   description: 'Pasta de amendoim artesanal - cremosa e saborosa.',
   flavors: ['Mousse de Brigadeiro', 'Leitinho', 'Leitinho Black'],
-  weight: 0.50, width: 10, height: 12, length: 10,
+  nutritionInfoImage: leitinhonutricional,
+  weight: 0.65, width: 12, height: 15, length: 12
 },
 
 // Sachê pré-treino Warzone 10g (preço informado R$ 10,50)
@@ -665,7 +684,7 @@ export const products: Product[] = [
   description: 'Sachê pré-treino para testar doses — ideal para experimentar sabores.',
   flavors: ['Blood Natle', 'Green Bomb'],
   nutritionInfoImage: warzonenutricional,
-  weight: 0.03, width: 8, height: 2, length: 12
+  weight: 0.10, width: 8, height: 3, length: 12
 },
 
 // Sachê pré-treino Panic 10g (preço informado R$ 9,50)
@@ -678,7 +697,7 @@ export const products: Product[] = [
   description: 'Sachê do pré-treino Panic — dose única para testar o produto.',
   flavors: ['Limonada', 'Maçã Verde'],
   nutritionInfoImage: panicnutricional,
-  weight: 0.03, width: 8, height: 2, length: 12
+  weight: 0.10, width: 8, height: 3, length: 12
 },
 
 // Barra de proteínas BOLD (preço informado R$ 17,00)
@@ -690,7 +709,8 @@ export const products: Product[] = [
   category: 'Barras e Pastas',
   description: 'Barra proteica saborosa, ótima para lanches e pós-treino.',
   flavors: ['Leite e Avelã', 'Bombom Crocante', 'Trufa de Chocolate', 'Cookies Black'],
-  weight: 0.08, width: 6, height: 2, length: 18
+  nutritionInfoImage: boldnutricional,
+  weight: 0.13, width: 6, height: 2, length: 18
 },
 
 // Barra de proteínas TASTE (preço informado R$ 12,50)
@@ -702,7 +722,8 @@ export const products: Product[] = [
   category: 'Barras e Pastas',
   description: 'Barra proteica TASTE — opção leve e saborosa.',
   flavors: ['Trufa de Chocolate', 'Doce de Leite (sabor argentino)'],
-  weight: 0.07, width: 6, height: 2, length: 18
+  nutritionInfoImage: tastenutricional,
+  weight: 0.11, width: 6, height: 3, length: 18
 },
 
 // Barra de proteína NUTRATA (preço informado R$ 13,50)
@@ -714,7 +735,8 @@ export const products: Product[] = [
   category: 'Barras e Pastas',
   description: 'Barra NUTRATA com sabor Dark Caramel — equilíbrio entre doce e proteína.',
   flavors: ['Dark Caramel Protein'],
-  weight: 0.07, width: 6, height: 2, length: 18
+  nutritionInfoImage: nutratanutricional,
+  weight: 0.11, width: 6, height: 3, length: 18
 },
 
 //Aminoácidos
