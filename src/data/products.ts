@@ -291,7 +291,7 @@ export const products: Product[] = [
   flavors: ['Maçã Verde', 'Frutas Vermelhas'],
   nutritionInfoImage: insanevolknutricional,
   weight: 0.35, width: 10, height: 12, length: 10,
-  badge: 'Produto Novo 🔥'
+  badge: 'Produto Exclusivo 🔥'
 },
 
 //200g
