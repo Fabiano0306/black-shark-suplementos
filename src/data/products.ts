@@ -55,6 +55,7 @@ import warzonenight from '@/assets/warzonenight.png';
 import macaperuana from '@/assets/macaperuana.png';
 import betaalanina from '@/assets/betaalanina.png';
 import creatinamax from '@/assets/creatinamax.png';
+import testocycle from '@/assets/testocycle.png';
 import chaAbdomenNutricional from '@/assets/nutricional/cha_abdomen_nutricional.png';
 import nightAbdomenNutricional from '@/assets/nutricional/night_abdomen_nutricional.png';
 import dimethylex_nutricional from '@/assets/nutricional/dimethylex_nutricional.png';
@@ -92,6 +93,10 @@ import multivitaminicodux from '@/assets/nutricional/multivitaminicodux_nutricio
 import vitac3vsnutricional from '@/assets/nutricional/vitac3vs_nutricional.png';
 import omega3nutricional from '@/assets/nutricional/omega3_nutricional.png';
 import biotinanutricional from '@/assets/nutricional/biotina_nutricional.png';
+import testocyclenutricional from '@/assets/nutricional/testocycle_nutricional.png';
+import collagenrenewnutricional from '@/assets/nutricional/collagenrenew_nutricional.png';
+import cartiflannutricional from '@/assets/nutricional/cartiflan_nutricional.png';
+import cartiflanultranutricional from '@/assets/nutricional/cartiflanultra_nutricional.png';
 
 export const products: Product[] = [
   // 🧘 Emagrecedores e Termogênicos
@@ -554,6 +559,17 @@ export const products: Product[] = [
   nutritionInfoImage: biotinanutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
+{
+  id: 'testo-cycle-under-labz-120caps',
+  name: 'Testo Cycle - Under Labz - 120caps',
+  price: 119.90,
+  image: testocycle,
+  category: 'Vitaminas e Minerais',
+  description: 'ciclo natural que ativa sua testosterona sem colaterais. Com L-aspartico, Boro e vitaminas chave, ele libera sua força, desejo e foco.',
+  nutritionInfoImage: testocyclenutricional,
+  weight: 0.25, width: 7, height: 12, length: 7
+},
+
 
 // Colágenos
 {
@@ -564,6 +580,7 @@ export const products: Product[] = [
   category: 'Colágenos',
   description: 'Colágeno hidrolisado com vitaminas e minerais.',
   flavors: ['Maçã Verde', 'Laranja', 'Morango', 'Abacaxi', 'Jabuticaba', 'Neutro'],
+  nutritionInfoImage: collagenrenewnutricional,
   weight: 0.45, width: 10, height: 15, length: 10
 },
 {
@@ -573,6 +590,7 @@ export const products: Product[] = [
   image: cartiflan,
   category: 'Colágenos',
   description: 'Colágeno tipo 2 para articulações e mobilidade.',
+  nutritionInfoImage: cartiflannutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 {
@@ -582,6 +600,7 @@ export const products: Product[] = [
   image: cartiflanultra,
   category: 'Colágenos',
   description: 'Suplemento de colágeno tipo 2 com ação anti-inflamatória.',
+  nutritionInfoImage: cartiflanultranutricional,
   weight: 0.25, width: 7, height: 12, length: 7
 },
 

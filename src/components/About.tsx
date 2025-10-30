@@ -1,4 +1,4 @@
-import { Award, Target, Users } from 'lucide-react';
+import { Award, Target, Users, MapPin } from 'lucide-react';
 
 export const About = () => {
   return (
@@ -31,7 +31,10 @@ export const About = () => {
             </p>
           </div>
 
-          <div className="product-card p-8 text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <div 
+            className="product-card p-8 text-center animate-slide-up" 
+            style={{ animationDelay: '0.1s' }}
+          >
             <div className="w-16 h-16 bg-shark-white rounded-full flex items-center justify-center mx-auto mb-6">
               <Target className="w-8 h-8 text-shark-black" />
             </div>
@@ -44,7 +47,10 @@ export const About = () => {
             </p>
           </div>
 
-          <div className="product-card p-8 text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div 
+            className="product-card p-8 text-center animate-slide-up" 
+            style={{ animationDelay: '0.2s' }}
+          >
             <div className="w-16 h-16 bg-shark-white rounded-full flex items-center justify-center mx-auto mb-6">
               <Users className="w-8 h-8 text-shark-black" />
             </div>
@@ -58,13 +64,41 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="mt-16 text-center">
+        {/* BLOCO ATUALIZADO */}
+        <div 
+          className="mt-16 text-center animate-slide-up animate-fade-in" 
+          style={{ animationDelay: '0.3s' }}
+        >
           <p className="text-shark-white text-lg mb-2">
-            <strong>Loja física:</strong> Presidente Getúlio - SC
+            <strong>Loja física:</strong> Ibirama - SC
           </p>
-          <p className="text-shark-gray-light">
+          <p className="text-shark-gray-light mb-6">
             Vendas online com entrega em todo o Brasil
           </p>
+
+          <a
+            href="https://maps.app.goo.gl/kcXrcepPN8FH4mdYA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex items-center gap-3 px-6 py-3 rounded-xl
+              bg-white/10 backdrop-blur-md
+              border border-white/20
+              hover:bg-white/15
+              transition-all duration-300
+              text-shark-white font-medium
+              shadow-[0_0_15px_rgba(0,200,255,0.4)]
+              hover:shadow-[0_0_25px_rgba(0,200,255,0.7)]
+              animate-slide-up animate-fade-in
+            "
+            style={{ animationDelay: '0.45s' }}
+          >
+            <MapPin 
+              className="w-5 h-5 text-shark-blue animate-slide-up animate-fade-in" 
+              style={{ animationDelay: '0.55s' }} 
+            />
+            Ver localização
+          </a>
         </div>
       </div>
     </section>

@@ -167,6 +167,10 @@ export const Cart = () => {
       case 'GUSTAVO10':
       case 'RUTH10':
       case 'BRUNOHC':
+      case 'MINHO10':
+      case 'LIDIANE10':
+      case 'DEBA':
+
         setDesconto(0.1);
         toast.success(`Cupom ${codigo} aplicado! Você ganhou 10% de desconto.`);
         break;
@@ -250,6 +254,20 @@ export const Cart = () => {
 
     msg += '\nEnviado via site oficial Black Shark Suplementos.';
 
+    const WEBHOOK_URL = "https://hook.us2.make.com/28i6q5orgkq34hhaam7my6hjxzqnklwv";
+
+if (desconto > 0 && cupom.trim()) {
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      coupon: cupom.trim().toUpperCase(),
+      timestamp: new Date().toISOString(),
+      subtotal: subtotal,
+      items: cart.reduce((s, it) => s + it.quantity, 0)
+    })
+  });
+}
     window.open(`https://wa.me/5547991906158?text=${encodeURIComponent(msg)}`, '_blank');
     toast.success('Redirecionando para WhatsApp...');
   };

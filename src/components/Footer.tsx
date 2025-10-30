@@ -41,7 +41,7 @@ export const Footer = () => {
                 aria-label="Abrir CEP 89140-000 no Google Maps"
               >
                 <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span>Presidente Getúlio - SC</span>
+                <span>Ibirama - SC</span>
               </a>
             </div>
           </div>
