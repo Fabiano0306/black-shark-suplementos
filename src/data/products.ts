@@ -237,7 +237,7 @@ export const products: Product[] = [
 {
   id: 'carnibol-darkness-900g',
   name: 'Carnibol - Darkness - 900g',
-  price: 219.90,
+  price: 211.00,
   image: carnibol,
   category: 'Whey Protein',
   description: 'Proteína de carne para ganho de massa muscular.',
