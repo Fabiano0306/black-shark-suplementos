@@ -2,6 +2,8 @@ import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { useEffect } from 'react';
+
 
 export const Cart = () => {
   const { cart, removeFromCart, updateQuantity, totalPrice, clearCart, resetShipping } = useCart();
@@ -157,33 +159,59 @@ export const Cart = () => {
   };
 
   // --- Função para aplicar cupom ---
-  const handleAplicarCupom = () => {
-    const codigo = cupom.trim().toUpperCase();
-    switch (codigo) {
-      case 'PADILHA_TREINADOR':
-      case 'KRUMM12':
-      case 'LUCAS10':
-      case 'NUTRIMAJU':
-      case 'GUSTAVO10':
-      case 'RUTH10':
-      case 'BRUNOHC':
-      case 'MINHO10':
-      case 'LIDIANE10':
-      case 'DEBA':
+ const handleAplicarCupom = () => {
+  const codigo = cupom.trim().toUpperCase();
+  let novoDesconto = 0;
 
-        setDesconto(0.1);
-        toast.success(`Cupom ${codigo} aplicado! Você ganhou 10% de desconto.`);
-        break;
-      case '':
-        setDesconto(0);
-        toast.info('Nenhum cupom aplicado.');
-        break;
-      default:
-        setDesconto(0);
-        toast.error('Cupom inválido.');
-        break;
+  switch (codigo) {
+    case 'PADILHA_TREINADOR':
+    case 'KRUMM12':
+    case 'LUCAS10':
+    case 'NUTRIMAJU':
+    case 'GUSTAVO10':
+    case 'RUTH10':
+    case 'BRUNOHC':
+    case 'MINHO10':
+    case 'LIDIANE10':
+    case 'DEBA':
+      novoDesconto = 0.1;
+      toast.success(`Cupom ${codigo} aplicado! Você ganhou 10% de desconto.`);
+      break;
+    case '':
+      toast.info('Nenhum cupom aplicado.');
+      break;
+    default:
+      toast.error('Cupom inválido.');
+      break;
+  }
+
+  // ⚠️ se o método de pagamento for PIX, mantém apenas 10% no total
+  if (paymentMethod === 'pix') {
+    setDesconto(0.1);
+  } else {
+    setDesconto(novoDesconto);
+  }
+};
+
+// 🧠 Atualiza desconto automaticamente ao mudar o método de pagamento
+useEffect(() => {
+  if (paymentMethod === 'pix') {
+    // Se for PIX, aplica 10%, independentemente do cupom
+    setDesconto(0.1);
+  } else {
+    // Se mudar para outro método, remove o desconto se não houver cupom válido
+    const codigo = cupom.trim().toUpperCase();
+    const cuponsValidos = [
+      'PADILHA_TREINADOR', 'KRUMM12', 'LUCAS10', 'NUTRIMAJU',
+      'GUSTAVO10', 'RUTH10', 'BRUNOHC', 'MINHO10', 'LIDIANE10', 'DEBA'
+    ];
+    if (cuponsValidos.includes(codigo)) {
+      setDesconto(0.1);
+    } else {
+      setDesconto(0);
     }
-  };
+  }
+}, [paymentMethod, cupom]);
 
   
 
@@ -218,39 +246,58 @@ export const Cart = () => {
     });
 
     // Totais / Descontos
-    const valorFrete = frete ? parseFloat(frete.valor.replace(',', '.')) : 0;
-    const subtotal = totalPrice;
-    const valorDesconto = subtotal * desconto;
-    const subtotalComDesconto = subtotal - valorDesconto;
-    const totalFinal =
-      deliveryType === 'entrega' && frete
-        ? (subtotalComDesconto + valorFrete).toFixed(2)
-        : subtotalComDesconto.toFixed(2);
+   const valorFrete = frete ? parseFloat(frete.valor.replace(',', '.')) : 0;
+const subtotal = totalPrice;
+const valorDesconto = subtotal * desconto;
+const subtotalComDesconto = subtotal - valorDesconto;
+const totalFinal =
+  deliveryType === 'entrega' && frete
+    ? (subtotalComDesconto + valorFrete).toFixed(2)
+    : subtotalComDesconto.toFixed(2);
 
-    msg += `\n💰 *Subtotal:* R$ ${subtotal.toFixed(2)}\n`;
-    if (desconto > 0) {
-      msg += `🏷️ *Desconto (${(desconto * 100).toFixed(0)}% - ${cupom.toUpperCase()}):* -R$ ${valorDesconto.toFixed(2)}\n`;
-    }
-    if (deliveryType === 'entrega' && frete) {
-      msg += `🚚 *Frete (${frete.servico}):* R$ ${frete.valor}\n`;
-      msg += `💵 *Total com frete:* R$ ${(parseFloat(totalFinal) /* already includes frete when calculated above */).toFixed(2)}\n`;
-    } else {
-      msg += `💵 *Total:* R$ ${totalFinal}\n`;
-    }
+msg += `\n💰 *Subtotal:* R$ ${subtotal.toFixed(2)}\n`;
 
-    if (endereco) {
-      msg += `\n📍 *Endereço:* ${endereco.logradouro}, ${numero || 's/n'} - ${endereco.bairro}, ${endereco.localidade}-${endereco.uf}\n`;
-      if (complemento) msg += `🏢 *Complemento:* ${complemento}\n`;
-    }
+// 🏷️ Exibe o tipo de desconto aplicado
+if (desconto > 0) {
+  if (paymentMethod === 'pix') {
+    msg += `🏷️ *Desconto (10% PIX):* -R$ ${valorDesconto.toFixed(2)}\n`;
+  } else if (cupom.trim() !== '') {
+    msg += `🏷️ *Desconto (${(desconto * 100).toFixed(0)}% - ${cupom.toUpperCase()}):* -R$ ${valorDesconto.toFixed(2)}\n`;
+  }
+}
 
-    msg += `\n🏁 *Entrega:* ${deliveryType === 'retirada' ? 'Retirada na loja' : 'Entrega'}\n`;
-    msg += `💳 *Pagamento:* ${paymentMethod === 'pix' ? 'PIX' : paymentMethod === 'debito' ? 'Débito' : 'Crédito'}\n`;
-    msg += `👤 *Cliente:* ${customerName}\n`;
-    if (cep) msg += `📮 *CEP:* ${cep}\n`;
+if (deliveryType === 'entrega' && frete) {
+  msg += `🚚 *Frete (${frete.servico}):* R$ ${frete.valor}\n\n`; // 👈 pular uma linha extra
+  msg += `-----------------------\n`; // 👈 adiciona linha separadora
+  msg += `💵 *TOTAL COM FRETE:* R$ ${parseFloat(totalFinal).toFixed(2)}\n`;
+  msg += `-----------------------\n`; // 👈 adiciona linha separadora
+} else {
+  msg += `💵 *Total:* R$ ${totalFinal}\n`;
+  msg += `-----------------------\n`; // 👈 também pode adicionar aqui se quiser manter o padrão
+}
 
-    if (desconto > 0) {
-      msg += `\n🏷️ Cupom utilizado: ${cupom.toUpperCase()}\n`;
-    }
+
+if (endereco) {
+  msg += `\n📍 *Endereço:* ${endereco.logradouro}, ${numero || 's/n'} - ${endereco.bairro}, ${endereco.localidade}-${endereco.uf}\n`;
+  if (complemento) msg += `🏢 *Complemento:* ${complemento}\n`;
+}
+
+msg += `\n🏁 *Entrega:* ${deliveryType === 'retirada' ? 'Retirada na loja' : 'Entrega'}\n`;
+msg += `💳 *Pagamento:* ${
+  paymentMethod === 'pix'
+    ? 'Pix (10% de desconto)'
+    : paymentMethod === 'debito'
+    ? 'Cartão de Débito'
+    : 'Cartão de Crédito'
+}\n`;
+msg += `👤 *Cliente:* ${customerName}\n`;
+if (cep) msg += `📮 *CEP:* ${cep}\n`;
+
+// Só exibe o cupom se for realmente usado
+if (cupom.trim() !== '' && paymentMethod !== 'pix') {
+  msg += `\n🏷️ Cupom utilizado: ${cupom.toUpperCase()}\n`;
+}
+
 
     msg += '\nEnviado via site oficial Black Shark Suplementos.';
 
@@ -527,7 +574,7 @@ if (desconto > 0 && cupom.trim()) {
                   onChange={(e) => setPaymentMethod(e.target.value as any)}
                   className="w-full px-4 py-2 bg-shark-gray-dark border border-shark-gray rounded-lg text-shark-white focus:outline-none focus:border-shark-white transition-colors"
                 >
-                  <option value="pix">PIX</option>
+                  <option value="pix">PIX - 10% de Desconto</option>
                   <option value="debito">Cartão Débito</option>
                   <option value="credito">Cartão Crédito</option>
                 </select>
