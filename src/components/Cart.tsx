@@ -174,6 +174,8 @@ export const Cart = () => {
     case 'MINHO10':
     case 'LIDIANE10':
     case 'DEBA':
+    case 'DEVCOSTA':
+      
       novoDesconto = 0.1;
       toast.success(`Cupom ${codigo} aplicado! Você ganhou 10% de desconto.`);
       break;
